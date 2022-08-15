@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_primary"
+    android:fitsSystemWindows="true"
+    tools:context=".todolist.presentation.TasksListFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true"
+        android:theme="@style/Theme.ToDoListYandex.AppBarOverlay">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="4dp"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextColor="@color/label_primary"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="center_vertical"
+            app:expandedTitleMarginStart="@dimen/expanded_title_margin"
+            app:expandedTitleTextAppearance="@style/TextStyle.LargeTitle"
+            app:expandedTitleTextColor="@color/label_primary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="Мои дела"
+            app:toolbarId="@+id/toolbar">
+
+            <TextView
+                style="@style/TextStyle.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="60dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/done_counter"
+                android:textColor="@color/label_primary" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="5dp"
+                app:layout_collapseMode="pin" />
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="3dp"-->
+<!--                android:background="@drawable/bottom_shadow"-->
+<!--                android:layout_gravity="bottom" />-->
+            <!--            TODO: Add shadow here-->
+
+            <ImageButton
+                android:id="@+id/toggle_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="25dp"
+                android:background="@android:color/transparent"
+                android:padding="15dp"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@drawable/ic_visibility" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/todo_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/recycler_background" />
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="29dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/color_blue"
+        android:contentDescription="@string/FAB_describtion"
+        android:src="@drawable/ic_add" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
