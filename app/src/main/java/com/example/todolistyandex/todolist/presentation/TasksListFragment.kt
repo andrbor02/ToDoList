@@ -9,15 +9,15 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistyandex.R
-import com.example.todolistyandex.databinding.FragmentScrollingBinding
-import com.example.todolistyandex.todolist.data.repository.TodoItemsRepositoryImpl
+import com.example.todolistyandex.databinding.FragmentTasksListBinding
+import com.example.todolistyandex.todolist.data.repository.TaskRepositoryImpl
 import com.example.todolistyandex.todolist.presentation.recycler.TasksListAdapter
 import com.example.todolistyandex.todolist.presentation.recycler.TasksListDiffUtil
 
 
 class TasksListFragment : Fragment() {
 
-    private lateinit var binding: FragmentScrollingBinding
+    private lateinit var binding: FragmentTasksListBinding
 
     private lateinit var tasksRecyclerView: RecyclerView
 
@@ -26,7 +26,7 @@ class TasksListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentScrollingBinding.inflate(layoutInflater)
+        binding = FragmentTasksListBinding.inflate(layoutInflater)
         val view = binding.root
 
         setUpRecycler()
@@ -43,9 +43,9 @@ class TasksListFragment : Fragment() {
         val viewModel = TasksListViewModel()
         val tasksListDiffUtil = TasksListDiffUtil()
 
-        val repo = TodoItemsRepositoryImpl()
+        val repo = TaskRepositoryImpl()
 
-        val todoItemsList = repo.getTodoItemsList()
+        val todoItemsList = repo.getTasksList()
 
         tasksRecyclerView = binding.todoRecyclerView
         tasksRecyclerView.layoutManager = LinearLayoutManager(activity)

@@ -7,17 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.todolistyandex.R
-import com.example.todolistyandex.databinding.FragmentTodoItemEditBinding
+import com.example.todolistyandex.databinding.FragmentTaskEditBinding
 
-class TodoItemEditFragment : Fragment() {
+class TaskEditFragment : Fragment() {
 
-    private lateinit var binding: FragmentTodoItemEditBinding
+    private lateinit var binding: FragmentTaskEditBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTodoItemEditBinding.inflate(layoutInflater)
+        binding = FragmentTaskEditBinding.inflate(layoutInflater)
         val view = binding.root
 
         binding.closeBut.setOnClickListener {

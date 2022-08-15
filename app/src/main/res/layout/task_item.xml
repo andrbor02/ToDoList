@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <CheckBox
-        android:id="@+id/task_completion_but"
+        android:id="@+id/task_completion_cb"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="19dp"
@@ -39,7 +39,7 @@
             android:text="Сделать очень важное дело " />
 
         <TextView
-            android:id="@+id/task_date"
+            android:id="@+id/task_deadline"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

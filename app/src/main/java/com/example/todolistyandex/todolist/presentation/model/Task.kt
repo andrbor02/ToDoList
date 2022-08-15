@@ -2,7 +2,7 @@ package com.example.todolistyandex.todolist.presentation.model
 
 import java.io.Serializable
 
-data class TodoItem(
+data class Task(
     val id: String,
     val text: String,
     val priority: TaskPriority,

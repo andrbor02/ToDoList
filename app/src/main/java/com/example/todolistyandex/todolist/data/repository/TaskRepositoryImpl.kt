@@ -1,19 +1,19 @@
 package com.example.todolistyandex.todolist.data.repository
 
 import com.example.todolistyandex.todolist.presentation.model.TaskPriority
-import com.example.todolistyandex.todolist.presentation.model.TodoItem
+import com.example.todolistyandex.todolist.presentation.model.Task
 
-class TodoItemsRepositoryImpl {
+class TaskRepositoryImpl {
 
-    fun addTodoItem(todoItem: TodoItem) {
+    fun addTask(task: Task) {
 
     }
 
-    fun getTodoItemsList() : ArrayList<TodoItem> {
+    fun getTasksList() : ArrayList<Task> {
 
-        val todoItemsList = ArrayList<TodoItem>()
+        val tasksList = ArrayList<Task>()
 
-        val todoItem1 = TodoItem(
+        val task1 = Task(
             id = "44",
             text = "дела должны быть максимально разнообразны, чтобы покрыть все комбинации возможных значений и проверить работу экрана наиболее полным образом",
             priority = TaskPriority.High(),
@@ -22,9 +22,9 @@ class TodoItemsRepositoryImpl {
             "34.99.22",
             "12.34.5678"
         )
-        repeat(5) { todoItemsList.add(todoItem1) }
+        repeat(5) { tasksList.add(task1) }
 
-        val todoItem2 = TodoItem(
+        val task2 = Task(
             id = "44",
             text = "дела должны быть максимально разнообразны",
             priority = TaskPriority.High(),
@@ -33,9 +33,9 @@ class TodoItemsRepositoryImpl {
             "34.99.22",
             "12.34.5678"
         )
-        repeat(5) { todoItemsList.add(todoItem2) }
+        repeat(5) { tasksList.add(task2) }
 
-        val todoItem3 = TodoItem(
+        val task3 = Task(
             id = "44",
             text = "дела должны быть",
             priority = TaskPriority.High(),
@@ -44,8 +44,8 @@ class TodoItemsRepositoryImpl {
             "34.99.22",
             "12.34.5678"
         )
-        repeat(5) { todoItemsList.add(todoItem3) }
+        repeat(5) { tasksList.add(task3) }
 
-        return todoItemsList
+        return tasksList
     }
 }
