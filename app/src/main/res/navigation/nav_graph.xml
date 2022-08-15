@@ -9,21 +9,21 @@
         android:id="@+id/tasksListFragment"
         android:name="com.example.todolistyandex.todolist.presentation.TasksListFragment"
         android:label="fragment_scrolling"
-        tools:layout="@layout/fragment_scrolling" >
+        tools:layout="@layout/fragment_tasks_list" >
         <action
             android:id="@+id/list_to_edit"
-            app:destination="@id/todoItemEditFragment" />
-        <argument
-            android:name="TodoItem"
-            app:argType="com.example.todolistyandex.todolist.presentation.model.TodoItem[]" />
+            app:destination="@id/taskEditFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
-        android:id="@+id/todoItemEditFragment"
-        android:name="com.example.todolistyandex.todoadditem.presentation.TodoItemEditFragment"
+        android:id="@+id/taskEditFragment"
+        android:name="com.example.todolistyandex.todoadditem.presentation.TaskEditFragment"
         android:label="fragment_todo_item_edit"
-        tools:layout="@layout/fragment_todo_item_edit" >
+        tools:layout="@layout/fragment_task_edit" >
         <action
             android:id="@+id/edit_to_list"
-            app:destination="@id/tasksListFragment" />
+            app:destination="@id/tasksListFragment"
+            app:popUpTo="@id/tasksListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
