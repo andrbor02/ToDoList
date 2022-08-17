@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/drawable/bottom_shadow.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/drawable/checkbox_color_selector.xml" value="0.103" />
+        <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/drawable/custom_checkbox.xml" value="0.112" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/drawable/ic_add.xml" value="0.119" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/drawable/ic_check.xml" value="0.112" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/drawable/ic_close.xml" value="0.112" />
@@ -26,6 +28,7 @@
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/layout/fragment_todo_item_edit.xml" value="0.21822916666666667" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/layout/item_task.xml" value="0.2171875" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/layout/recycler_background.xml" value="0.21822916666666667" />
+        <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/layout/task_item.xml" value="0.36923078006541266" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/layout/todo_item.xml" value="0.18461539003270633" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/menu/menu_priority.xml" value="0.21822916666666667" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/menu/menu_scrolling.xml" value="0.21822916666666667" />

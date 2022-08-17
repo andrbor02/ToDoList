@@ -16,6 +16,10 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/black</item>
 
+        <!--        Colored checkbox-->
+        <item name="colorAccent">@color/color_green</item>
+        <item name="android:textColorSecondary">@color/support_separator</item>
+
         <!--        Disabling action bar-->
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
