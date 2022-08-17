@@ -39,7 +39,7 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginBottom="24dp"
                 android:text="@string/done_counter"
-                android:textColor="@color/label_primary" />
+                android:textColor="@color/label_tertiary" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -48,11 +48,11 @@
                 android:elevation="5dp"
                 app:layout_collapseMode="pin" />
 
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="3dp"-->
-<!--                android:background="@drawable/bottom_shadow"-->
-<!--                android:layout_gravity="bottom" />-->
+            <!--            <View-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="3dp"-->
+            <!--                android:background="@drawable/bottom_shadow"-->
+            <!--                android:layout_gravity="bottom" />-->
             <!--            TODO: Add shadow here-->
 
             <ImageButton
@@ -76,16 +76,32 @@
         android:layout_marginHorizontal="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/recycler_background"
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/todo_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/recycler_background" />
-        </FrameLayout>
+                android:scrollbarAlwaysDrawVerticalTrack="true" />
+
+            <TextView
+                style="@style/TextStyle.Body"
+                android:layout_width="match_parent"
+                android:layout_height="63sp"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="61dp"
+                android:text="@string/new_label"
+                android:textColor="@color/label_tertiary" />
+            <!--            TODO make button highlight when touched-->
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -93,8 +109,8 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="29dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="29dp"
         android:backgroundTint="@color/color_blue"
         android:contentDescription="@string/FAB_describtion"
         android:src="@drawable/ic_add" />
