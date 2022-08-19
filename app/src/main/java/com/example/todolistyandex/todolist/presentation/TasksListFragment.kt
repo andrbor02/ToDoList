@@ -11,13 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistyandex.R
 import com.example.todolistyandex.databinding.FragmentTasksListBinding
 import com.example.todolistyandex.todolist.data.repository.TaskRepositoryImpl
+import com.example.todolistyandex.todolist.data.storage.hardcoded.HardcodedTaskStorage
 import com.example.todolistyandex.todolist.presentation.recycler.TasksListAdapter
 import com.example.todolistyandex.todolist.presentation.recycler.TasksListDiffUtil
 
 
 class TasksListFragment : Fragment() {
 
-    private lateinit var binding: FragmentTasksListBinding
+    private var _binding: FragmentTasksListBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var tasksRecyclerView: RecyclerView
 
@@ -25,30 +27,39 @@ class TasksListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentTasksListBinding.inflate(layoutInflater)
+    ): View {
+        _binding = FragmentTasksListBinding.inflate(layoutInflater)
         val view = binding.root
 
         setUpRecycler()
-
-        binding.fab.setOnClickListener {
-            it.findNavController().navigate(R.id.list_to_edit)
-        }
+        setUpListeners()
 
         return view
     }
 
-    fun setUpRecycler() {
+    private fun setUpListeners() {
+
+        binding.fab.setOnClickListener {
+            it.findNavController().navigate(R.id.list_to_edit)
+        }
+    }
+
+    private fun setUpRecycler() {
 
         val viewModel = TasksListViewModel()
         val tasksListDiffUtil = TasksListDiffUtil()
 
-        val repo = TaskRepositoryImpl()
+        val repo = TaskRepositoryImpl(HardcodedTaskStorage())
 
-        val todoItemsList = repo.getTasksList()
+        val todoItemsList = repo.get()
 
         tasksRecyclerView = binding.todoRecyclerView
         tasksRecyclerView.layoutManager = LinearLayoutManager(activity)
         tasksRecyclerView.adapter = TasksListAdapter(viewModel, tasksListDiffUtil, todoItemsList)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
