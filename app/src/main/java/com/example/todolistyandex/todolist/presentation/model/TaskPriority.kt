@@ -2,9 +2,9 @@ package com.example.todolistyandex.todolist.presentation.model
 
 sealed class TaskPriority {
 
-    class None() : TaskPriority()
+    object None : TaskPriority()
 
-    class Low() : TaskPriority()
+    object Low : TaskPriority()
 
-    class High() : TaskPriority()
+    object High : TaskPriority()
 }
