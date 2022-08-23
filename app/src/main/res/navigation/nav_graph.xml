@@ -19,11 +19,5 @@
         android:id="@+id/taskEditFragment"
         android:name="com.example.todolistyandex.todoadditem.presentation.TaskEditFragment"
         android:label="fragment_todo_item_edit"
-        tools:layout="@layout/fragment_task_edit" >
-        <action
-            android:id="@+id/edit_to_list"
-            app:destination="@id/tasksListFragment"
-            app:popUpTo="@id/tasksListFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_task_edit" />
 </navigation>

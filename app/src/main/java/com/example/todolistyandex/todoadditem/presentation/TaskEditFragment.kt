@@ -22,15 +22,17 @@ class TaskEditFragment : Fragment() {
         val view = binding.root
 
         binding.closeBut.setOnClickListener {
-            it.findNavController().navigate(R.id.edit_to_list)
+            it.findNavController().navigateUp()
         }
 
         binding.saveBut.setOnClickListener {
-            it.findNavController().navigate(R.id.edit_to_list)
+            //viewModel!!.addTask(extractTask())
+            viewModel!!.insert(extractTask())
+            it.findNavController().navigateUp()
         }
 
         binding.deleteBut.setOnClickListener {
-            it.findNavController().navigate(R.id.edit_to_list)
+            it.findNavController().navigateUp()
         }
 
         return view
