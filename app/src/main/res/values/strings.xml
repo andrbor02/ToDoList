@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">ToDoListYandex</string>
+    <string name="FAB_describtion">Add new task into list</string>
+    <string name="priority_none">Нет</string>
+    <string name="priority_low">Низкий</string>
+    <string name="priority_high">!!Высокий</string>
+    <string name="completed_counter_label">Выполнено - </string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_but_text">СОХРАНИТЬ</string>
+    <string name="priority_label">Важность</string>
+    <string name="deadline_label">Сделать до</string>
+    <string name="deadline_default">1 января 1970</string>
+    <string name="delete_label">Удалить</string>
+    <string name="new_label">Новое</string>
+
 </resources>
