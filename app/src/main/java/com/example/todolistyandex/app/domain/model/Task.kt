@@ -1,4 +1,4 @@
-package com.example.todolistyandex.todolist.presentation.model
+package com.example.todolistyandex.app.domain.model
 
 import java.io.Serializable
 
@@ -7,7 +7,7 @@ data class Task(
     val text: String,
     val priority: TaskPriority,
     val deadline: String = "",
-    val completion: Boolean,
+    var completion: Boolean,
     val creationDate: String,
     val changeDate: String = ""
 ) : Serializable

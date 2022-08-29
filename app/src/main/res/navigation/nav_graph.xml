@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/taskEditFragment"
-        android:name="com.example.todolistyandex.todoadditem.presentation.TaskEditFragment"
+        android:name="com.example.todolistyandex.todoedit.presentation.TaskEditFragment"
         android:label="fragment_todo_item_edit"
         tools:layout="@layout/fragment_task_edit" />
 </navigation>

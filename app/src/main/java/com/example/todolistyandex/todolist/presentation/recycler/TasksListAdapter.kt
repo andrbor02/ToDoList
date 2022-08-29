@@ -3,15 +3,15 @@ package com.example.todolistyandex.todolist.presentation.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import com.example.todolistyandex.app.domain.model.Task
 import com.example.todolistyandex.databinding.TaskItemBinding
-import com.example.todolistyandex.todolist.presentation.TasksListViewModel
-import com.example.todolistyandex.todolist.presentation.model.Task
+import com.example.todolistyandex.todolist.presentation.stateholders.TasksListViewModel
 
 class TasksListAdapter(
     private val viewModel: TasksListViewModel,
     tasksListDiffUtil: TasksListDiffUtil,
-    private val tasks: ArrayList<Task>
-    ) :
+    private val taskClickListener: TaskClickListener
+) :
     ListAdapter<Task, TasksListViewHolder>(tasksListDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksListViewHolder {
@@ -23,10 +23,6 @@ class TasksListAdapter(
     }
 
     override fun onBindViewHolder(holder: TasksListViewHolder, position: Int) {
-        holder.bindTask(tasks[position])
-    }
-
-    override fun getItemCount(): Int {
-        return tasks.size
+        holder.bindTask(getItem(position), taskClickListener)
     }
 }

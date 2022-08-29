@@ -1,22 +1,32 @@
-package com.example.todolistyandex.todolist.data.repository
+package com.example.todolistyandex.data.datasource.hardcoded
 
-import com.example.todolistyandex.todolist.presentation.model.TaskPriority
-import com.example.todolistyandex.todolist.presentation.model.Task
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.todolistyandex.app.domain.model.Task
+import com.example.todolistyandex.app.domain.model.TaskPriority
+import com.example.todolistyandex.data.datasource.TaskDataSource
+import javax.inject.Inject
 
-class TaskRepositoryImpl {
+class HardcodedTaskDataSource @Inject constructor() : TaskDataSource {
 
-    fun addTask(task: Task) {
+    private val _taskList = MutableLiveData<List<Task>>()
+    val taskList: LiveData<List<Task>> = _taskList
 
+    override fun saveTaskList(taskList: List<Task>) {
+        _taskList.value = taskList
     }
 
-    fun getTasksList() : ArrayList<Task> {
+    override fun getTasksList(): List<Task> {
+        return taskList.value.orEmpty()
+    }
 
+    init {
         val tasksList = ArrayList<Task>()
 
         val task1 = Task(
             id = "44",
             text = "дела должны быть максимально разнообразны, чтобы покрыть все комбинации возможных значений и проверить работу экрана наиболее полным образом",
-            priority = TaskPriority.High(),
+            priority = TaskPriority.High,
             deadline = "13.05.2020",
             false,
             "34.99.22",
@@ -27,7 +37,7 @@ class TaskRepositoryImpl {
         val task2 = Task(
             id = "44",
             text = "дела должны быть максимально разнообразны",
-            priority = TaskPriority.High(),
+            priority = TaskPriority.High,
             deadline = "13.05.2020",
             false,
             "34.99.22",
@@ -38,7 +48,7 @@ class TaskRepositoryImpl {
         val task3 = Task(
             id = "44",
             text = "дела должны быть",
-            priority = TaskPriority.High(),
+            priority = TaskPriority.High,
             deadline = "13.05.2020",
             false,
             "34.99.22",
@@ -46,6 +56,6 @@ class TaskRepositoryImpl {
         )
         repeat(5) { tasksList.add(task3) }
 
-        return tasksList
+        _taskList.value = tasksList
     }
 }

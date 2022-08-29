@@ -5,23 +5,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistyandex.R
+import com.example.todolistyandex.app.App
+import com.example.todolistyandex.app.domain.model.Task
 import com.example.todolistyandex.databinding.FragmentTasksListBinding
-import com.example.todolistyandex.todolist.data.repository.TaskRepositoryImpl
-import com.example.todolistyandex.todolist.data.storage.hardcoded.HardcodedTaskStorage
+import com.example.todolistyandex.todolist.presentation.recycler.TaskClickListener
 import com.example.todolistyandex.todolist.presentation.recycler.TasksListAdapter
 import com.example.todolistyandex.todolist.presentation.recycler.TasksListDiffUtil
+import com.example.todolistyandex.todolist.presentation.stateholders.TasksListViewModel
+import com.example.todolistyandex.todolist.presentation.stateholders.TasksListViewModelFactory
+import javax.inject.Inject
 
 
-class TasksListFragment : Fragment() {
+class TasksListFragment : Fragment(), TaskClickListener {
 
     private var _binding: FragmentTasksListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var tasksRecyclerView: RecyclerView
+    @Inject
+    lateinit var tasksListViewModelFactory: TasksListViewModelFactory
+
+    private val viewModel: TasksListViewModel by viewModels {
+        tasksListViewModelFactory
+    }
+
+    private var adapter: TasksListAdapter? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (context?.applicationContext as App).appComponent.injectToListFragment(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +51,11 @@ class TasksListFragment : Fragment() {
         setUpRecycler()
         setUpListeners()
 
+        viewModel.taskListLD.observe(viewLifecycleOwner) { newList ->
+            newList.let { adapter?.submitList(it) }
+            updateCompletedCounter(newList)
+        }
+
         return view
     }
 
@@ -42,24 +64,61 @@ class TasksListFragment : Fragment() {
         binding.fab.setOnClickListener {
             it.findNavController().navigate(R.id.list_to_edit)
         }
+        binding.newTaskRvBut.setOnClickListener {
+            it.findNavController().navigate(R.id.list_to_edit)
+        }
+
+//        binding.toggleVisibility.setOnClickListener {
+//            it.foreground = resources.getDrawable(
+//                R.drawable.ic_visibility_off
+//            )
+//        }
+
+        binding.imageSwitcher.setOnClickListener {
+            // TODO: make visibility icons switch
+            viewModel.visibilityChanged()
+        }
+    }
+
+    fun goToTaskDetails(task: Task) {
+        findNavController().navigate(R.id.list_to_edit)
     }
 
     private fun setUpRecycler() {
 
-        val viewModel = TasksListViewModel()
-        val tasksListDiffUtil = TasksListDiffUtil()
-
-        val repo = TaskRepositoryImpl(HardcodedTaskStorage())
-
-        val todoItemsList = repo.get()
-
-        tasksRecyclerView = binding.todoRecyclerView
+        val tasksRecyclerView = binding.todoRecyclerView
         tasksRecyclerView.layoutManager = LinearLayoutManager(activity)
-        tasksRecyclerView.adapter = TasksListAdapter(viewModel, tasksListDiffUtil, todoItemsList)
+
+        val tasksListDiffUtil = TasksListDiffUtil()
+        adapter = TasksListAdapter(
+            viewModel,
+            tasksListDiffUtil,
+            this
+        )
+        tasksRecyclerView.adapter = adapter
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemClick(task: Task) {
+        goToTaskDetails(task)
+    }
+
+    override fun onCheckboxClick(task: Task, isCompleted: Boolean) {
+        viewModel.changeTaskCompletion(task, isCompleted)
+    }
+
+    fun updateCompletedCounter(taskList: List<Task>) {
+        val countCompleted = taskList.filter { task ->
+            task.completion == true
+        }.size
+
+        val counterLabel = getString(R.string.completed_counter_label)
+        val newCounter = "$counterLabel $countCompleted"
+
+        binding.completedCounter.text = newCounter
     }
 }

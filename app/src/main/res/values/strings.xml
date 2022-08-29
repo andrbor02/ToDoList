@@ -4,7 +4,7 @@
     <string name="priority_none">Нет</string>
     <string name="priority_low">Низкий</string>
     <string name="priority_high">!!Высокий</string>
-    <string name="done_counter">Выполнено - 0</string>
+    <string name="completed_counter_label">Выполнено - </string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save_but_text">СОХРАНИТЬ</string>

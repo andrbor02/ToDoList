@@ -32,13 +32,14 @@
             app:toolbarId="@+id/toolbar">
 
             <TextView
+                android:id="@+id/completed_counter"
                 style="@style/TextStyle.Body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="60dp"
                 android:layout_marginBottom="24dp"
-                android:text="@string/done_counter"
+                android:text="@string/completed_counter_label"
                 android:textColor="@color/label_tertiary" />
 
             <androidx.appcompat.widget.Toolbar
@@ -55,18 +56,42 @@
             <!--                android:layout_gravity="bottom" />-->
             <!--            TODO: Add shadow here-->
 
-            <ImageButton
-                android:id="@+id/toggle_visibility"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:layout_marginEnd="25dp"
-                android:background="@android:color/transparent"
-                android:padding="15dp"
-                android:scaleX="1.5"
-                android:scaleY="1.5"
-                android:src="@drawable/ic_visibility" />
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/toggle_visibility"-->
+            <!--                android:layout_width="48dp"-->
+            <!--                android:layout_height="48dp"-->
+            <!--                android:layout_gravity="end|bottom"-->
+            <!--                android:layout_marginEnd="25dp"-->
+            <!--                android:background="@android:color/transparent"-->
+            <!--                android:padding="15dp"-->
+            <!--                android:scaleX="1.5"-->
+            <!--                android:scaleY="1.5"-->
+            <!--                android:src="@drawable/visibility_icon_selector" />-->
 
+
+            <ImageSwitcher
+                android:id="@+id/image_switcher"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end|bottom"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:layout_marginEnd="24dp"
+                android:background="@android:color/transparent"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ic_vis_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_visibility" />
+
+                <ImageView
+                    android:id="@+id/ic_vis_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_visibility_off" />
+            </ImageSwitcher>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -89,6 +114,7 @@
                 android:scrollbarAlwaysDrawVerticalTrack="true" />
 
             <TextView
+                android:id="@+id/new_task_rv_but"
                 style="@style/TextStyle.Body"
                 android:layout_width="match_parent"
                 android:layout_height="63sp"
@@ -106,12 +132,13 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:backgroundTint="@color/color_blue"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="29dp"
-        android:backgroundTint="@color/color_blue"
         android:contentDescription="@string/FAB_describtion"
         android:src="@drawable/ic_add" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
