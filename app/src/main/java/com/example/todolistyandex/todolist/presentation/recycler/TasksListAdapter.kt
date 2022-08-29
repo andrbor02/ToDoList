@@ -5,10 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.todolistyandex.app.domain.model.Task
 import com.example.todolistyandex.databinding.TaskItemBinding
-import com.example.todolistyandex.todolist.presentation.stateholders.TasksListViewModel
 
 class TasksListAdapter(
-    private val viewModel: TasksListViewModel,
     tasksListDiffUtil: TasksListDiffUtil,
     private val taskClickListener: TaskClickListener
 ) :
@@ -19,7 +17,7 @@ class TasksListAdapter(
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemTaskBinding = TaskItemBinding.inflate(layoutInflater, parent, false)
 
-        return TasksListViewHolder(viewModel, itemTaskBinding)
+        return TasksListViewHolder(itemTaskBinding)
     }
 
     override fun onBindViewHolder(holder: TasksListViewHolder, position: Int) {

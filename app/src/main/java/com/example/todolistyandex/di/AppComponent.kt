@@ -1,6 +1,7 @@
 package com.example.todolistyandex.di
 
 import android.content.Context
+import com.example.todolistyandex.todoedit.presentation.TaskEditFragment
 import com.example.todolistyandex.todolist.presentation.TasksListFragment
 import com.example.todolistyandex.todolist.presentation.stateholders.TasksListViewModelFactory
 import dagger.BindsInstance
@@ -12,14 +13,9 @@ interface AppComponent {
 
     fun injectToListFragment(tasksListFragment: TasksListFragment)
     fun injectToListViewModelFactory(tasksListViewModelFactory: TasksListViewModelFactory)
-//    fun injectToEditFragment(taskEditFragment: TaskEditFragment)
-//
-//    appComponent.inject...(this)
+    fun injectToEditFragment(taskEditFragment: TaskEditFragment)
 
-    //val dbTaskStorage: RoomDatabaseTaskStorage
-
-    //val hardcodedTaskStorage: HardcodedTaskDataSource
-
+    // TODO: make Factory instead of builder
     @Component.Builder
     interface Builder {
 

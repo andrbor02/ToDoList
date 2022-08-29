@@ -3,10 +3,8 @@ package com.example.todolistyandex.todolist.presentation.recycler
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistyandex.app.domain.model.Task
 import com.example.todolistyandex.databinding.TaskItemBinding
-import com.example.todolistyandex.todolist.presentation.stateholders.TasksListViewModel
 
 class TasksListViewHolder(
-    private val viewModel: TasksListViewModel,
     private val binding: TaskItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -25,12 +23,3 @@ class TasksListViewHolder(
         }
     }
 }
-
-
-//val id: String,
-//val text: String,
-//val priority: TaskPriority,
-//val deadline: String = "",
-//val completion: Boolean,
-//val creationDate: String,
-//val changeDate: String = ""

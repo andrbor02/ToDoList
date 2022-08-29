@@ -9,7 +9,6 @@ class GetTaskListUseCase @Inject constructor(
     private val taskRepository: TaskRepository
 ) {
     operator fun invoke(): Flow<List<Task>> {
-//        Log.e("MMM", "IN USE CASE ${taskRepository.get().asLiveData().value}")
         return taskRepository.get()
     }
 }

@@ -80,8 +80,9 @@ class TasksListFragment : Fragment(), TaskClickListener {
         }
     }
 
-    fun goToTaskDetails(task: Task) {
+    private fun goToTaskDetails(task: Task) {
         findNavController().navigate(R.id.list_to_edit)
+        // TODO: send task to edit fragment without direct connection between feature packages
     }
 
     private fun setUpRecycler() {
@@ -91,7 +92,6 @@ class TasksListFragment : Fragment(), TaskClickListener {
 
         val tasksListDiffUtil = TasksListDiffUtil()
         adapter = TasksListAdapter(
-            viewModel,
             tasksListDiffUtil,
             this
         )
@@ -111,7 +111,7 @@ class TasksListFragment : Fragment(), TaskClickListener {
         viewModel.changeTaskCompletion(task, isCompleted)
     }
 
-    fun updateCompletedCounter(taskList: List<Task>) {
+    private fun updateCompletedCounter(taskList: List<Task>) {
         val countCompleted = taskList.filter { task ->
             task.completion == true
         }.size

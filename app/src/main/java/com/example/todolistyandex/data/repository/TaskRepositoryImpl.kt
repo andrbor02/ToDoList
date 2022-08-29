@@ -8,12 +8,8 @@ import com.example.todolistyandex.app.domain.model.TaskPriority
 import com.example.todolistyandex.data.datasource.hardcoded.HardcodedTaskDataSource
 import com.example.todolistyandex.data.datasource.room.DBTask
 import com.example.todolistyandex.data.datasource.room.TaskDao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TaskRepositoryImpl @Inject constructor(
@@ -26,31 +22,6 @@ class TaskRepositoryImpl @Inject constructor(
     override val taskList: Flow<List<Task>> = dbTaskList.map { dblist ->
         dblist.map { DBTask ->
             mapDataToDomain(DBTask)
-        }
-    }
-
-    val scope = CoroutineScope(Job())
-
-    init {
-        scope.launch {
-            Log.e("MMM", "DBTaskList value: ${dbTaskList.first()}")
-
-            Log.e("MMM", "TaskList value: ${taskList.first()}")
-
-            Log.e("MMM", "DBVAL ${taskDao.getTasks().first()}")
-
-//            taskDao.insertTask(
-//                DBTask(
-//                    0,
-//                    "first",
-//                    "dfa",
-//                    completion = true,
-//                    creationDate = "daf"
-//                )
-//            )
-
-            Log.e("MMM", "DBVAL NEW ${taskDao.getTasks().first()}")
-
         }
     }
 
@@ -116,7 +87,4 @@ class TaskRepositoryImpl @Inject constructor(
             dbTask.changeDate
         )
     }
-//    override fun get(): List<Task> {
-//        return storage.taskList.value.orEmpty()
-//    }
 }

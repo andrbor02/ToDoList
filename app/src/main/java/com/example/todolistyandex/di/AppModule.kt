@@ -12,17 +12,6 @@ import dagger.Provides
 @Module(includes = [AppBindModule::class])
 class AppModule {
 
-//    @Provides
-//    fun provideTaskRepository(
-//        hardcodedTaskStorage: HardcodedTaskDataSource,
-//        taskDao: TaskDao
-//    ): TaskRepositoryImpl {
-//        return TaskRepositoryImpl(
-//            hardcodedTaskStorage = hardcodedTaskStorage,
-//            taskDao = taskDao
-//        )
-//    }
-
     @Provides
 //  @Singleton
     fun provideDBStorage(context: Context): RoomDatabaseTaskStorage {
@@ -35,12 +24,6 @@ class AppModule {
     fun provideTaskDao(db: RoomDatabaseTaskStorage): TaskDao {
         return db.taskDao()
     }
-
-    //не нужно т к добавил inject constructor
-//    @Provides
-//    fun provideHardcodedTaskStorage(): HardcodedTaskDataSource {
-//        return HardcodedTaskDataSource()
-//    }
 }
 
 @Module

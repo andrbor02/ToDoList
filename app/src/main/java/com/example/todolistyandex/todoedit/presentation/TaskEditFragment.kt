@@ -42,7 +42,7 @@ class TaskEditFragment : Fragment() {
         return view
     }
 
-    fun setUpListeners() {
+    private fun setUpListeners() {
         binding.closeBut.setOnClickListener {
             it.findNavController().navigateUp()
         }
