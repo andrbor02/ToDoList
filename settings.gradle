@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "ToDoListYandex"
 include ':app'
 include ':data'
+include ':core-model'
