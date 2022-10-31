@@ -2,5 +2,9 @@
 ToDoList - приложение со списком задач
 
 * Kotlin
-* ViewBinding
 * Multi-Module
+* Dagger2
+* Room
+* Navigation Component
+* Coroutines
+* ViewBinding
