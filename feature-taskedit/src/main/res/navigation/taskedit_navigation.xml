@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/taskedit_navigation"
+    app:startDestination="@id/taskEditFragment">
+
+    <fragment
+        android:id="@+id/taskEditFragment"
+        android:name="com.example.feature_todoedit.impl.presentation.ui.TaskEditFragment"
+        android:label="TaskEditFragment">
+
+        <deepLink app:uri="@string/uri_task_edit" />
+    </fragment>
+</navigation>

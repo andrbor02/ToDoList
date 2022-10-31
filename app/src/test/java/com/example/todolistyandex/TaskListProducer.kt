@@ -1,7 +1,8 @@
 package com.example.todolistyandex
 
-import com.example.todolistyandex.app.domain.model.Task
-import com.example.todolistyandex.app.domain.model.TaskPriority
+import com.example.core_model.Task
+import com.example.core_model.TaskPriority
+
 
 class TaskListProducer() {
 

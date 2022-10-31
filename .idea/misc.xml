@@ -35,6 +35,11 @@
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/menu/menu_scrolling.xml" value="0.21822916666666667" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.119" />
         <entry key="..\:/Projects/Android/ToDoListYandex/app/src/main/res/xml/root_preferences.xml" value="0.21822916666666667" />
+        <entry key="..\:/Projects/Android/ToDoListYandex/feature-taskedit/src/main/res/drawable/drawable.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/ToDoListYandex/feature-taskedit/src/main/res/drawable/ic_close.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/ToDoListYandex/feature-taskedit/src/main/res/layout/activity_main.xml" value="0.2171875" />
+        <entry key="..\:/Projects/Android/ToDoListYandex/feature-taskedit/src/main/res/layout/fragment_task_edit.xml" value="0.18461539003270633" />
+        <entry key="..\:/Projects/Android/ToDoListYandex/feature-taskedit/src/main/res/layout/task_item.xml" value="0.2171875" />
       </map>
     </option>
   </component>
