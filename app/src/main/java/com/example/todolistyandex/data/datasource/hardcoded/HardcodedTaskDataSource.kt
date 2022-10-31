@@ -2,9 +2,9 @@ package com.example.todolistyandex.data.datasource.hardcoded
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.todolistyandex.app.domain.model.Task
-import com.example.todolistyandex.app.domain.model.TaskPriority
-import com.example.todolistyandex.data.datasource.TaskDataSource
+import com.example.core_data.api.TaskDataSource
+import com.example.core_model.Task
+import com.example.core_model.TaskPriority
 import javax.inject.Inject
 
 class HardcodedTaskDataSource @Inject constructor() : TaskDataSource {

@@ -1,7 +1,7 @@
 package com.example.todolistyandex.todolist.domain.usecase
 
+import com.example.core_data.impl.repository.TaskRepositoryImpl
 import com.example.todolistyandex.TaskListProducer
-import com.example.todolistyandex.data.repository.TaskRepositoryImpl
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flowOf

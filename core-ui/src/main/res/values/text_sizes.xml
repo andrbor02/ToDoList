@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextStyle">
+
+    </style>
+
+    <style name="TextStyle.LargeTitle">
+        <item name="android:textSize">32sp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+    </style>
+
+    <style name="TextStyle.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">12dp</item>
+    </style>
+
+    <style name="TextStyle.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">10dp</item>
+    </style>
+
+    <style name="TextStyle.Body">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="TextStyle.Subhead">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+    </style>
+
+</resources>

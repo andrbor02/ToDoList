@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.example.feature_tasklist'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 27
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+    implementation project(':core-data')
+    implementation project(':core-utils')
+    implementation project(':core-model')
+    implementation project(':core-ui')
+
+    // Core
+    implementation libs.corektx
+    implementation libs.appcompat
+
+    // UI
+    implementation libs.material
+
+    // DI
+    implementation libs.dagger
+    kapt libs.dagger.compiler
+
+    // Navigation
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
+    implementation libs.navigation.dynamicfeatures
+
+    // Test
+    testImplementation libs.junit4
+    testImplementation libs.junit5
+    testImplementation libs.mockk
+    androidTestImplementation libs.espresso
+}

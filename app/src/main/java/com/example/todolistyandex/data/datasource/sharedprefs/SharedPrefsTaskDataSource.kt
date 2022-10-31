@@ -1,7 +1,7 @@
 package com.example.todolistyandex.data.datasource.sharedprefs
 
-import com.example.todolistyandex.app.domain.model.Task
-import com.example.todolistyandex.data.datasource.TaskDataSource
+import com.example.core_data.api.TaskDataSource
+import com.example.core_model.Task
 
 class SharedPrefsTaskDataSource() : TaskDataSource {
 

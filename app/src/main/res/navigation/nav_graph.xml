@@ -5,19 +5,18 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/tasksListFragment">
 
+    <!--        android:name="com.example.todolistyandex.todolist.presentation.TasksListFragment"-->
     <fragment
         android:id="@+id/tasksListFragment"
-        android:name="com.example.todolistyandex.todolist.presentation.TasksListFragment"
+        android:name="com.example.feature_tasklist.impl.presentation.ui.TasksListFragment"
         android:label="fragment_scrolling"
         tools:layout="@layout/fragment_tasks_list" >
-        <action
-            android:id="@+id/list_to_edit"
-            app:destination="@id/taskEditFragment"
-            app:popUpToInclusive="false" />
+<!--        <action-->
+<!--            android:id="@+id/list_to_edit"-->
+<!--            app:destination="@id/taskEditFragment"-->
+<!--            app:popUpToInclusive="false" />-->
     </fragment>
-    <fragment
-        android:id="@+id/taskEditFragment"
-        android:name="com.example.todolistyandex.todoedit.presentation.TaskEditFragment"
-        android:label="fragment_todo_item_edit"
-        tools:layout="@layout/fragment_task_edit" />
+
+    <include app:graph="@navigation/taskedit_navigation"/>
+
 </navigation>

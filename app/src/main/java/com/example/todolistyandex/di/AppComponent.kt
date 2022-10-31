@@ -1,19 +1,18 @@
 package com.example.todolistyandex.di
 
 import android.content.Context
-import com.example.todolistyandex.todoedit.presentation.TaskEditFragment
-import com.example.todolistyandex.todolist.presentation.TasksListFragment
-import com.example.todolistyandex.todolist.presentation.stateholders.TasksListViewModelFactory
+import com.example.core_data.impl.di.CoreDataModule
+import com.example.todolistyandex.presentation.MainActivity
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
 
-@Component(modules = [AppModule::class])
+@Component(modules = [AppModule::class, CoreDataModule::class])
+@Singleton
 interface AppComponent {
 
-    fun injectToListFragment(tasksListFragment: TasksListFragment)
-    fun injectToListViewModelFactory(tasksListViewModelFactory: TasksListViewModelFactory)
-    fun injectToEditFragment(taskEditFragment: TaskEditFragment)
+    fun injectToMainActivity(mainActivity: MainActivity)
 
     // TODO: make Factory instead of builder
     @Component.Builder
