@@ -80,15 +80,6 @@ dependencies {
     testImplementation libs.mockk
     androidTestImplementation libs.espresso
 
-    // Network
-    implementation libs.retrofit
-    implementation libs.retrofitgson
-
-    // Room
-    implementation libs.room.ktx
-    implementation libs.room.runtime
-    kapt libs.room.compiler
-
     // DI
     implementation libs.dagger
     kapt libs.dagger.compiler

@@ -21,7 +21,7 @@ junit4 = "4.13.2"
 junit5 = "5.8.2"
 mockk = "1.12.7"
 espresso = "3.4.0"
-# Network
+# Retrofit
 retrofit = "2.9.0"
 retrofitgson = "2.5.0"
 # Room
@@ -51,7 +51,7 @@ junit4 = { module = "junit:junit", version.ref = "junit4" }
 junit5 = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
-# Network
+# Retrofit
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofitgson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitgson" }
 # Room

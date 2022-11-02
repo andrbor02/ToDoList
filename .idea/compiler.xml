@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="ToDoListYandex.app" target="11" />
       <module name="ToDoListYandex.core-data" target="11" />
+      <module name="ToDoListYandex.core-network" target="11" />
       <module name="ToDoListYandex.core-ui" target="11" />
       <module name="ToDoListYandex.feature-taskedit" target="11" />
       <module name="ToDoListYandex.feature-tasklist" target="11" />
