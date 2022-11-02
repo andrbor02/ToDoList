@@ -1,4 +1,4 @@
-package com.example.todolistyandex.data.datasource.retrofit
+package com.example.todolistyandex.core.retrofit
 
 data class NetworkTask(
     val id: Long,

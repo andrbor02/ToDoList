@@ -1,6 +1,6 @@
 package com.example.todolistyandex.core.network
 
-import com.example.todolistyandex.data.datasource.retrofit.NetworkTask
+import com.example.todolistyandex.core.retrofit.NetworkTask
 import retrofit2.http.GET
 import retrofit2.http.Path
 
