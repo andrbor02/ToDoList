@@ -1,6 +1,7 @@
 package com.example.todolistyandex.todolist.domain.usecase
 
 import com.example.core_data.impl.repository.TaskRepositoryImpl
+import com.example.feature_tasklist.impl.domain.usecase.GetTaskListUseCase
 import com.example.todolistyandex.TaskListProducer
 import io.mockk.every
 import io.mockk.mockk
@@ -15,7 +16,7 @@ internal class GetTaskListUseCaseTest {
     @Test
     fun shouldReturnRepositoryData() {
         val repository = mockk<TaskRepositoryImpl>()
-        every { repository.get() } returns flowOf(
+        every { repository.getAll() } returns flowOf(
             taskListProducer.getHugeTaskList()
         )
         val getTaskListUseCase = GetTaskListUseCase(repository)
@@ -28,7 +29,7 @@ internal class GetTaskListUseCaseTest {
 //            )
 //        ))
 
-        val excepected = repository.get()
+        val excepected = repository.getAll()
 
         val actual = getTaskListUseCase.invoke()
 

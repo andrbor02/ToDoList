@@ -1,4 +1,4 @@
-package com.example.core_data.impl.datasource.room
+package com.example.core_data.impl.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

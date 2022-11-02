@@ -33,6 +33,7 @@ android {
 
 dependencies {
 
+    implementation libs.junitktx
     testImplementation libs.junit4
 
     // DI

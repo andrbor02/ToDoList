@@ -4,7 +4,7 @@ import com.example.todolistyandex.core.retrofit.NetworkTask
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-const val BASE_URL = "https://beta.mrdekk.ru/todobackend"
+const val BASE_URL = ""
 
 interface Api {
     @GET("$BASE_URL/list")

@@ -1,4 +1,4 @@
-package com.example.feature_todoedit.impl.domain
+package com.example.feature_todoedit.impl.domain.usecase
 
 import com.example.core_data.api.TaskRepository
 import com.example.core_model.Task

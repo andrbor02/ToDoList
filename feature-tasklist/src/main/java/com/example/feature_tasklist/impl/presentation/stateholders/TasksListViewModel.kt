@@ -1,6 +1,5 @@
 package com.example.feature_tasklist.impl.presentation.stateholders
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,7 +22,6 @@ class TasksListViewModel @Inject constructor(
         viewModelScope.launch {
             val list = getTaskListUseCase()
             list.collect {
-                Log.e("MMM", "$it")
                 _taskListLD.value = it
             }
         }
@@ -38,10 +36,5 @@ class TasksListViewModel @Inject constructor(
 
     fun visibilityChanged() {
         // TODO: filter tasks by visibility
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.e("MMM", "ListViewModel cleared")
     }
 }

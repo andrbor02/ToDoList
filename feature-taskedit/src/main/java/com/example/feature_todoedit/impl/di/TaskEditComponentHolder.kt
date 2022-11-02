@@ -21,16 +21,6 @@ object TaskEditComponentHolder : ComponentHolder<TaskEditApi, TaskEditDependenci
     internal fun getComponent(): TaskEditComponent {
         checkNotNull(component) { "TaskEditComponent is not initialized" }
         return component!!
-//        return object : TaskEditComponent {
-//            override fun inject(fragment: TaskEditFragment) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun starter(): TaskEditStarter {
-//                Log.e("MMM", "MAMOHT")
-//                return TaskEditStarterImpl()
-//            }
-//        }
     }
 
     override fun reset() {

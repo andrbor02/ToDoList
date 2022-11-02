@@ -9,20 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.feature_todoedit.databinding.FragmentTaskEditBinding
 import com.example.feature_todoedit.impl.di.TaskEditComponentHolder
+import com.example.feature_todoedit.impl.domain.utils.PriorityChecker
+import com.example.feature_todoedit.impl.domain.utils.TaskExtractor
 import com.example.feature_todoedit.impl.presentation.stateholders.TaskEditViewModel
 import com.example.feature_todoedit.impl.presentation.stateholders.TaskEditViewModelFactory
 import javax.inject.Inject
 
 class TaskEditFragment : Fragment() {
-
-//    @Inject
-//    lateinit var hardcodedTaskDataSource: HardcodedTaskDataSource
-
-//    @Inject
-//    lateinit var loggerTaskDataSource: LoggerTaskDataSource
-//
-//    @Inject
-//    lateinit var repository: TaskRepository
 
     lateinit var extractor: TaskExtractor
 
@@ -34,12 +27,6 @@ class TaskEditFragment : Fragment() {
 
     private val viewModel: TaskEditViewModel by viewModels {
         taskEditViewModelFactory
-//        TaskEditViewModelFactory(
-////            (activity?.application as App).repository
-//            //hardcodedTaskDataSource
-//            loggerTaskDataSource,
-//            repository
-//        )
     }
 
     override fun onCreateView(
@@ -50,7 +37,8 @@ class TaskEditFragment : Fragment() {
         val view = binding.root
 
         TaskEditComponentHolder.getComponent().inject(this)
-        extractor = TaskExtractor(binding)
+
+        extractor = TaskExtractor(PriorityChecker(), binding)
 
         setUpListeners()
         return view
@@ -64,30 +52,25 @@ class TaskEditFragment : Fragment() {
         binding.saveBut.setOnClickListener {
             val newTask = extractor.extract()
             viewModel.insert(newTask)
-            viewModel.getHard()
             findNavController().navigateUp()
 
         }
-//
-//        binding.deleteBut.setOnClickListener {
-//            it.findNavController().navigateUp()
-//        }
+
+        binding.deleteBut.setOnClickListener {
+//            val curTask = extractor.extract()
+//            viewModel.delete(curTask)
+            findNavController().navigateUp()
+        }
     }
 
-//    private fun identifyPriority(): TaskPriority {
-//        return when (binding.taskPriority.text.toString()) {
-//            TaskPriority.None.title -> TaskPriority.None
-//            TaskPriority.Low.title -> TaskPriority.Low
-//            TaskPriority.High.title -> TaskPriority.High
-//            else -> throw IllegalArgumentException("No such priority state!")
-//        }
-////        TODO move this logic to domain
-//    }
+    override fun onPause() {
+        super.onPause()
+        TaskEditComponentHolder.reset()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        TaskEditComponentHolder.reset() // TODO move to onPause
     }
 
 }

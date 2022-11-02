@@ -5,9 +5,13 @@ import com.example.core_data.api.TaskRepository
 import com.example.core_data.impl.datasource.hardcoded.HardcodedTaskDataSource
 import com.example.core_data.impl.datasource.room.RoomDatabaseTaskStorage
 import com.example.core_data.impl.datasource.room.TaskDao
+import com.example.core_data.impl.mapper.DataToDomainTaskMapper
+import com.example.core_data.impl.mapper.DomainToDataTaskMapper
+import com.example.core_data.impl.mapper.Mappers
 import com.example.core_data.impl.repository.TaskRepositoryImpl
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class CoreDataModule {
@@ -18,7 +22,7 @@ class CoreDataModule {
     }
 
     @Provides
-//  @Singleton
+    @Singleton
     fun provideDBStorage(context: Context): RoomDatabaseTaskStorage {
         return RoomDatabaseTaskStorage.getDatabase(
             context = context
@@ -31,13 +35,21 @@ class CoreDataModule {
     }
 
     @Provides
-    fun provideTaskRepository(
-        hardcodedTaskDataSource: HardcodedTaskDataSource,
-        taskDao: TaskDao
-    ): TaskRepository {
-        return TaskRepositoryImpl(
-            hardcodedTaskDataSource,
-            taskDao
-        )
+    fun provideTaskRepository(taskRepositoryImpl: TaskRepositoryImpl): TaskRepository {
+        return taskRepositoryImpl
+    }
+
+    @Provides
+    fun provideDataToDomainTaskMapper(
+        dataToDomainTaskMapper: DataToDomainTaskMapper
+    ): Mappers.DataToDomainTaskMapper {
+        return dataToDomainTaskMapper
+    }
+
+    @Provides
+    fun provideDomainToDataTaskMapper(
+        domainToDataTaskMapper: DomainToDataTaskMapper
+    ): Mappers.DomainToDataTaskMapper {
+        return domainToDataTaskMapper
     }
 }

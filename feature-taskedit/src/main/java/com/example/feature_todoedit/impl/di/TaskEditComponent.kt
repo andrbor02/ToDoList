@@ -23,10 +23,4 @@ interface TaskEditComponent: TaskEditApi {
             return DaggerTaskEditComponent.factory().create(dependencies)
         }
     }
-
-
-//    @Component(dependencies = [DataApi::class])
-//    @PerFeature
-//    interface TaskEditDependenciesComponent: TaskEditDependencies { }
-
 }

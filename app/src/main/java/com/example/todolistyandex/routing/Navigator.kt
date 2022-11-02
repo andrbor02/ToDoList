@@ -21,16 +21,6 @@ class Navigator @Inject constructor(
 
     private var navContr: NavController? = null
 
-//    fun goToTaskEditFeature(view: View, context: Context) {
-////        featureTaskEdit.get().starter().start(view, context)
-//        featureTaskEdit.get().starter().start(view, context)
-//    }
-
-
-//    override fun addNewTask(view: View, context: Context) {
-//        featureTaskEdit.get().starter().start(view, context)
-//    }
-
     override fun addNewTask() {
         featureTaskEdit.get().starter().start()
         val request = NavDeepLinkRequest.Builder
@@ -42,7 +32,8 @@ class Navigator @Inject constructor(
     }
 
     override fun editExistingTask(taskId: String) {
-        TODO("Not yet implemented")
+        featureTaskEdit.get().starter().start()
+        //TODO add logic
     }
 
 

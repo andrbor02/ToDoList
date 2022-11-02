@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.core_data.impl.model.DBTask
 
 @Database(entities = [DBTask::class], version = 1, exportSchema = false)
 abstract class RoomDatabaseTaskStorage : RoomDatabase() {

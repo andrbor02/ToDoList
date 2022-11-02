@@ -5,21 +5,20 @@ import com.example.core_model.Task
 import com.example.core_model.TaskPriority
 import javax.inject.Inject
 
+//TODO refactor this class
 class HardcodedTaskDataSource @Inject constructor () : TaskDataSource {
 
-//    private val _taskList = Flow<List<Task>>()
+    //    private val _taskList = Flow<List<Task>>()
 //    val taskList: LiveData<List<Task>> = _taskList
 //
     override fun saveTaskList(taskList: List<Task>) {
         //_taskList.value = taskList
-    // TODO: do real method
     }
 //
-    override fun getTasksList(): List<Task> {
+override fun getTasksList(): List<Task> {
 //        return taskList.value.orEmpty()
-        return emptyList()
-    // TODO: do real realization
-    }
+    return emptyList()
+}
 
     init {
         val tasksList = ArrayList<Task>()
@@ -61,6 +60,6 @@ class HardcodedTaskDataSource @Inject constructor () : TaskDataSource {
     }
 
     override fun toString(): String {
-        return "MAMOHT"
+        return "HardcodedTaskDataSource"
     }
 }

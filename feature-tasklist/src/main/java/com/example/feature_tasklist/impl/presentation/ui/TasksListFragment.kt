@@ -25,9 +25,6 @@ class TasksListFragment : Fragment(), TaskClickListener {
     private var _binding: FragmentTasksListBinding? = null
     private val binding get() = _binding!!
 
-//    @Inject
-//    lateinit var navigator: Navigator
-
     @Inject
     lateinit var tasksListViewModelFactory: TasksListViewModelFactory
 
@@ -39,15 +36,6 @@ class TasksListFragment : Fragment(), TaskClickListener {
     }
 
     private var adapter: TasksListAdapter? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-//        tasksListViewModelFactory = TasksListViewModelFactory(
-//            UpdateTaskCompletionUseCase((activity?.application as App).repository),
-//            GetTaskListUseCase((activity?.application as App).repository)
-//        )
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,13 +61,14 @@ class TasksListFragment : Fragment(), TaskClickListener {
     private fun setUpListeners() {
 
         binding.fab.setOnClickListener {
-//            navigator.goToTaskEditFeature(requireView(), requireContext())
             navigation.addNewTask()
         }
+
         binding.newTaskRvBut.setOnClickListener {
-//            navigator.goToTaskEditFeature(requireView(), requireContext())
+            navigation.addNewTask()
         }
 
+        // TODO: make completed tasks invisible
 //        binding.toggleVisibility.setOnClickListener {
 //            it.foreground = resources.getDrawable(
 //                R.drawable.ic_visibility_off
@@ -87,14 +76,13 @@ class TasksListFragment : Fragment(), TaskClickListener {
 //        }
 
         binding.imageSwitcher.setOnClickListener {
-            // TODO: make visibility icons switch
             viewModel.visibilityChanged()
         }
     }
 
     private fun goToTaskDetails(task: Task) {
-//        findNavController().navigate(R.id.list_to_edit)
         // TODO: send task to edit fragment without direct connection between feature packages
+//        findNavController().navigate(R.id.list_to_edit)
     }
 
     private fun setUpRecycler() {
@@ -108,11 +96,6 @@ class TasksListFragment : Fragment(), TaskClickListener {
             this
         )
         tasksRecyclerView.adapter = adapter
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onItemClick(task: Task) {
@@ -132,5 +115,15 @@ class TasksListFragment : Fragment(), TaskClickListener {
         val newCounter = "$counterLabel $countCompleted"
 
         binding.completedCounter.text = newCounter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        TaskListComponentHolder.reset()
     }
 }
