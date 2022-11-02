@@ -1,5 +1,7 @@
 package com.example.core_network.api
 
-interface NetworkApi {
+import com.example.core_network.impl.di.BaseApi
+
+interface NetworkApi : BaseApi {
     fun networkClient()
 }
