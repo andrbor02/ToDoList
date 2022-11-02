@@ -14,14 +14,10 @@ interface AppComponent {
 
     fun injectToMainActivity(mainActivity: MainActivity)
 
-    // TODO: make Factory instead of builder
-    @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        fun context(context: Context): Builder
-
-        fun build(): AppComponent
+    @Component.Factory
+    interface Factory {
+        fun create(
+            @BindsInstance context: Context
+        ): AppComponent
     }
-
 }
