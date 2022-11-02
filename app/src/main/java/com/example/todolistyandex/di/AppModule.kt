@@ -3,10 +3,7 @@ package com.example.todolistyandex.di
 import android.content.Context
 import com.example.core_data.api.DataApi
 import com.example.core_data.api.DataDependencies
-import com.example.core_data.api.TaskDataSource
 import com.example.core_data.api.TaskRepository
-import com.example.core_data.impl.datasource.hardcoded.HardcodedTaskDataSource
-import com.example.core_data.impl.datasource.logger.Logger
 import com.example.core_data.impl.di.CoreDataComponentHolder
 import com.example.feature_tasklist.api.TaskListApi
 import com.example.feature_tasklist.impl.di.TaskListComponentHolder
@@ -16,12 +13,11 @@ import com.example.feature_todoedit.api.TaskEditApi
 import com.example.feature_todoedit.impl.di.TaskEditComponentHolder
 import com.example.feature_todoedit.impl.di.TaskEditDependencies
 import com.example.todolistyandex.routing.Navigator
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [AppBindModule::class])
+@Module
 class AppModule {
 
     @Provides
@@ -49,24 +45,11 @@ class AppModule {
     @Singleton
     @Provides
     fun provideTaskEditDependencies(
-        context: Context,
         coreDataApi: DataApi
     ): TaskEditDependencies {
         return object : TaskEditDependencies {
-            //            override fun hardcodedTaskStorage() = HardcodedTaskDataSource()
-            override fun hardcodedTaskDataSource() = HardcodedTaskDataSource()
-
             override fun repository(): TaskRepository {
                 return coreDataApi.getTaskRepository()
-                //return CoreDataComponentHolder.get().getTaskRepository()
-//                return TaskRepositoryImpl(
-//                    HardcodedTaskDataSource(),
-//                    RoomDatabaseTaskStorage.getDatabase(context).taskDao()
-//                )
-            }
-
-            override fun logger(): Logger {
-                return Logger()
             }
         }
     }
@@ -92,12 +75,4 @@ class AppModule {
         CoreDataComponentHolder.init(dependencies)
         return CoreDataComponentHolder.get()
     }
-}
-
-@Module
-interface AppBindModule {
-//    @Binds
-//    fun bindTaskRepositoryToImpl(taskRepositoryImpl: TaskRepositoryImpl): TaskRepository
-    @Binds
-    fun bindTaskDataSource(hardcodedTaskDataSource: HardcodedTaskDataSource): TaskDataSource
 }

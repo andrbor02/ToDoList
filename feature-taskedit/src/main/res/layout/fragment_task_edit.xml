@@ -100,13 +100,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextStyle.Body"
-                    android:text="ded" />
+                    android:text="@string/deadline" />
 
                 <TextView
                     android:id="@+id/task_deadline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lll"
+                    android:text="@string/default_deadline"
                     style="@style/TextStyle.Subhead"
                     android:layout_gravity="bottom" />
                 </LinearLayout>

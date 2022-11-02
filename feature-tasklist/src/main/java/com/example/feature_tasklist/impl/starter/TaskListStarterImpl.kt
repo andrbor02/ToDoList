@@ -6,7 +6,9 @@ import com.example.feature_tasklist.api.TaskListStarter
 @PerFeature
 class TaskListStarterImpl : TaskListStarter {
 
-    //    override fun start(view: View, context: Context) {
+    // TODO: create navigation strategy
+
+    //        override fun start(view: View, context: Context) {
 //        val request = NavDeepLinkRequest.Builder
 //            .fromUri(context.getString(R.string.uri_task_list).toUri())
 //            .build()

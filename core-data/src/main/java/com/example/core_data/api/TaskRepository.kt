@@ -5,13 +5,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface TaskRepository {
 
-    val taskList: Flow<List<Task>>
-
     suspend fun insert(task: Task)
 
     suspend fun update(task: Task)
 
     suspend fun delete(id: String)
 
-    fun get(): Flow<List<Task>>
+    fun getAll(): Flow<List<Task>>
 }

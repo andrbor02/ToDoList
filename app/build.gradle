@@ -53,6 +53,7 @@ dependencies {
 
     implementation(project(":core-model"))
     implementation(project(":core-data"))
+    implementation(project(":core-network"))
     implementation(project(":feature-taskedit"))
     implementation(project(":feature-tasklist"))
 
@@ -79,15 +80,6 @@ dependencies {
     testImplementation libs.junit5
     testImplementation libs.mockk
     androidTestImplementation libs.espresso
-
-    // Network
-    implementation libs.retrofit
-    implementation libs.retrofitgson
-
-    // Room
-    implementation libs.room.ktx
-    implementation libs.room.runtime
-    kapt libs.room.compiler
 
     // DI
     implementation libs.dagger

@@ -11,7 +11,6 @@ import javax.inject.Singleton
     modules = [CoreDataModule::class]
         )
 interface CoreDataComponent: DataApi {
-    //fun inject(app: Application)
 
     @Component.Factory
     interface Factory {
