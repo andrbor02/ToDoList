@@ -3,8 +3,9 @@ ToDoList - приложение со списком задач
 
 * Kotlin
 * Multi-Module
-* CLEAN
+* Clean
 * SOLID
+* MVVM
 * Dagger2
 * Room
 * Navigation Component
