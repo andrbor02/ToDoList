@@ -17,6 +17,7 @@
             android:id="@+id/close_but"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/exit_description"
             android:src="@drawable/ic_close" />
 
         <TextView
@@ -45,15 +46,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/task_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textCapSentences|textMultiLine"
-            android:background="@drawable/recycler_background"
-            android:layout_margin="16dp" />
+            <EditText
+                android:id="@+id/task_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:background="@drawable/recycler_background"
+                android:hint="@string/task_description"
+                android:inputType="textCapSentences|textMultiLine"
+                android:minHeight="48dp" />
 
             <LinearLayout
                 android:id="@+id/priority_but"
@@ -96,19 +101,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/TextStyle.Body"
-                    android:text="@string/deadline" />
 
-                <TextView
-                    android:id="@+id/task_deadline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/default_deadline"
-                    style="@style/TextStyle.Subhead"
-                    android:layout_gravity="bottom" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextStyle.Body"
+                        android:text="@string/deadline_label" />
+
+                    <TextView
+                        android:id="@+id/task_deadline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/default_deadline"
+                        style="@style/TextStyle.Subhead"
+                        android:layout_gravity="bottom" />
                 </LinearLayout>
 
                 <Switch
@@ -116,6 +122,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
                     tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                 <DatePicker
@@ -142,13 +150,14 @@
                 android:clickable="true">
 
                 <ImageButton
-                    android:id="@+id/toggle_visibility"
+                    android:id="@+id/ic_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|bottom"
                     android:layout_marginEnd="16dp"
                     android:background="@android:color/transparent"
                     android:padding="15dp"
+                    android:contentDescription="@string/delete_description"
                     android:scaleX="1.5"
                     android:scaleY="1.5"
                     android:src="@drawable/ic_delete" />

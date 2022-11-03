@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="@color/back_primary"
     android:fitsSystemWindows="true"
     tools:context=".impl.">
 
@@ -28,7 +28,7 @@
             app:expandedTitleTextAppearance="@style/TextStyle.LargeTitle"
             app:expandedTitleTextColor="@color/label_primary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="Мои дела"
+            app:title="@string/title"
             app:toolbarId="@+id/toolbar">
 
             <TextView
@@ -84,13 +84,15 @@
                     android:id="@+id/ic_vis_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_visibility" />
+                    android:src="@drawable/ic_visibility"
+                    android:contentDescription="@string/visibility_on_description" />
 
                 <ImageView
                     android:id="@+id/ic_vis_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_visibility_off" />
+                    android:src="@drawable/ic_visibility_off"
+                    android:contentDescription="@string/visibility_off_description" />
             </ImageSwitcher>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -135,10 +137,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:backgroundTint="@color/color_blue"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="29dp"
-        android:contentDescription="@string/FAB_describtion"
+        android:backgroundTint="@color/color_blue"
+        android:contentDescription="@string/fab_description"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:src="@drawable/ic_add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
