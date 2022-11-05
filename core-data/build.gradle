@@ -35,7 +35,9 @@ dependencies {
 
     implementation(project(":core-model"))
 
+    // Test
     testImplementation libs.junit4
+    testImplementation libs.junit5
 
     // DI
     implementation libs.dagger
