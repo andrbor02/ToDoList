@@ -12,7 +12,7 @@ class DomainToDataTaskMapperTest {
     fun testMapperNonePriority() {
         val mapper = DomainToDataTaskMapper()
         val task = Task(
-            id = "41328934",
+            id = 41328934,
             text = "Test task",
             priority = TaskPriority.None,
             deadline = "01.01.1980",
@@ -39,7 +39,7 @@ class DomainToDataTaskMapperTest {
     fun testMapperLowPriority() {
         val mapper = DomainToDataTaskMapper()
         val task = Task(
-            id = "41328934",
+            id = 41328934,
             text = "Test task",
             priority = TaskPriority.Low,
             deadline = "01.01.1980",
@@ -66,7 +66,7 @@ class DomainToDataTaskMapperTest {
     fun testMapperHighPriority() {
         val mapper = DomainToDataTaskMapper()
         val task = Task(
-            id = "41328934",
+            id = 41328934,
             text = "Test task",
             priority = TaskPriority.High,
             deadline = "01.01.1980",

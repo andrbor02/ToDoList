@@ -44,9 +44,8 @@ class TaskRepositoryImpl @Inject constructor(
     }
 
     @WorkerThread
-    override suspend fun delete(id: String) {
-        val dbId = id.toLong()
-        taskDao.deleteTask(dbId)
+    override suspend fun delete(id: Long) {
+        taskDao.deleteTask(id)
     }
 
     override fun getAll(): Flow<List<Task>> {

@@ -14,7 +14,7 @@ class DomainToDataTaskMapper @Inject constructor() : Mappers.DomainToDataTaskMap
         }
 
         return DBTask(
-            task.id.toLong(),
+            task.id,
             task.text,
             taskPriority,
             task.deadline,

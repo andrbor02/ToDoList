@@ -16,7 +16,7 @@ class TaskExtractor(
         val taskDeadline = binding.taskDeadline.text.toString()
 
         return Task(
-            "0",
+            0,
             taskName,
             TaskPriority.None,
             taskDeadline,

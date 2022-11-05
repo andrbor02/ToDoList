@@ -3,7 +3,7 @@ package com.example.core_model
 import java.io.Serializable
 
 data class Task(
-    val id: String,
+    val id: Long,
     val text: String,
     val priority: TaskPriority,
     val deadline: String = "",

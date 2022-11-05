@@ -64,7 +64,7 @@ class TaskListProducer() {
 
     private class TaskProducer() {
 
-        private val defaultId = "0"
+        private val defaultId = 0L
         private val defaultText = "Default task"
         private val defaultPriority = TaskPriority.None
         private val defaultCreationDate = "Default creation date"

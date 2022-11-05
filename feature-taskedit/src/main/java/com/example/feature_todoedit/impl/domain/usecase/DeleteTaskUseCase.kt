@@ -6,7 +6,7 @@ import javax.inject.Inject
 class DeleteTaskUseCase @Inject constructor(
     private val repository: TaskRepository
 ) {
-    suspend operator fun invoke(id: String) {
+    suspend operator fun invoke(id: Long) {
         repository.delete(id)
     }
 }

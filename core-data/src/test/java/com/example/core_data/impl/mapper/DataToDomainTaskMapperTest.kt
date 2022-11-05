@@ -22,7 +22,7 @@ class DataToDomainTaskMapperTest {
         )
 
         val expected = Task(
-            id = "41328934",
+            id = 41328934,
             text = "Test task",
             priority = TaskPriority.None,
             deadline = "01.01.1980",
@@ -50,7 +50,7 @@ class DataToDomainTaskMapperTest {
         )
 
         val expected = Task(
-            id = "41328934",
+            id = 41328934,
             text = "Test task",
             priority = TaskPriority.Low,
             deadline = "01.01.1980",
@@ -78,7 +78,7 @@ class DataToDomainTaskMapperTest {
         )
 
         val expected = Task(
-            id = "41328934",
+            id = 41328934,
             text = "Test task",
             priority = TaskPriority.High,
             deadline = "01.01.1980",
@@ -105,7 +105,7 @@ class DataToDomainTaskMapperTest {
         )
 
         val expected = Task(
-            id = "41328934",
+            id = 41328934,
             text = "Test task",
             priority = TaskPriority.None,
             deadline = "01.01.1980",
