@@ -5,7 +5,7 @@ import com.example.core_model.Task
 import com.example.core_model.TaskPriority
 import javax.inject.Inject
 
-class DomainToDataTaskMapper @Inject constructor() : Mappers.DomainToDataTaskMapper {
+internal class DomainToDataTaskMapper @Inject constructor() : Mappers.DomainToDataTaskMapper {
     override operator fun invoke(task: Task): DBTask {
         val taskPriority = when (task.priority) {
             TaskPriority.None -> TaskPriority.None.title

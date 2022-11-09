@@ -1,5 +1,6 @@
 package com.example.feature_tasklist.impl.di
 
+import com.example.core_utils.di.ComponentHolder
 import com.example.feature_tasklist.api.TaskListApi
 
 

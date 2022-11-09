@@ -1,5 +1,6 @@
 package com.example.feature_todoedit.impl.di
 
+import com.example.core_utils.di.ComponentHolder
 import com.example.feature_todoedit.api.TaskEditApi
 
 object TaskEditComponentHolder : ComponentHolder<TaskEditApi, TaskEditDependencies> {

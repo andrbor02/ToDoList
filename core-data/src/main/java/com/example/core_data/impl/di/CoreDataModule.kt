@@ -14,7 +14,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class CoreDataModule {
+internal class CoreDataModule {
 
     @Provides
     fun provideHardcodedTaskDataSource(): HardcodedTaskDataSource {

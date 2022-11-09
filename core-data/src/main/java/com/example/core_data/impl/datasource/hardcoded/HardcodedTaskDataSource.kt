@@ -6,7 +6,7 @@ import com.example.core_model.TaskPriority
 import javax.inject.Inject
 
 //TODO refactor this class
-class HardcodedTaskDataSource @Inject constructor () : TaskDataSource {
+internal class HardcodedTaskDataSource @Inject constructor() : TaskDataSource {
 
     //    private val _taskList = Flow<List<Task>>()
 //    val taskList: LiveData<List<Task>> = _taskList
@@ -14,11 +14,12 @@ class HardcodedTaskDataSource @Inject constructor () : TaskDataSource {
     override fun saveTaskList(taskList: List<Task>) {
         //_taskList.value = taskList
     }
-//
-override fun getTasksList(): List<Task> {
+
+    //
+    override fun getTasksList(): List<Task> {
 //        return taskList.value.orEmpty()
-    return emptyList()
-}
+        return emptyList()
+    }
 
     init {
         val tasksList = ArrayList<Task>()
