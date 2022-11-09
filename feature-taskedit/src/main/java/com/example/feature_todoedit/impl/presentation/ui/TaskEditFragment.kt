@@ -1,23 +1,28 @@
 package com.example.feature_todoedit.impl.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.core_model.Task
+import com.example.core_utils.datawrappers.Result
+import com.example.feature_todoedit.R
 import com.example.feature_todoedit.databinding.FragmentTaskEditBinding
 import com.example.feature_todoedit.impl.di.TaskEditComponentHolder
 import com.example.feature_todoedit.impl.domain.utils.PriorityChecker
 import com.example.feature_todoedit.impl.domain.utils.TaskExtractor
+import com.example.feature_todoedit.impl.domain.utils.TaskMerger
 import com.example.feature_todoedit.impl.presentation.stateholders.TaskEditViewModel
 import com.example.feature_todoedit.impl.presentation.stateholders.TaskEditViewModelFactory
 import javax.inject.Inject
 
 class TaskEditFragment : Fragment() {
 
-    lateinit var extractor: TaskExtractor
+    private lateinit var extractor: TaskExtractor
 
     private var _binding: FragmentTaskEditBinding? = null
     private val binding get() = _binding!!
@@ -40,8 +45,18 @@ class TaskEditFragment : Fragment() {
 
         extractor = TaskExtractor(PriorityChecker(), binding)
 
+        checkIfTaskExists()
         setUpListeners()
         return view
+    }
+
+    private fun checkIfTaskExists() {
+        val argsKey = resources.getString(R.string.task_id)
+        val argsValue = arguments?.getString(argsKey) ?: ""
+        if (argsValue != "") {
+            Log.e("MMM", "Existing task id: $argsValue")
+            setExistingTask(taskId = argsValue)
+        }
     }
 
     private fun setUpListeners() {
@@ -50,17 +65,49 @@ class TaskEditFragment : Fragment() {
         }
 
         binding.saveBut.setOnClickListener {
-            val newTask = extractor.extract()
-            viewModel.insert(newTask)
+            viewModel.apply {
+                val extractedTask = extractor.extract()
+                if (currentTaskLD.value == null) {
+                    insert(extractedTask)
+                } else {
+                    currentTaskLD.value?.map { task ->
+                        val merger = TaskMerger(
+                            extractedTask = extractedTask,
+                            currentTask = task
+                        )
+                        val editedTask = merger.merge()
+                        Log.e("MMM", "task in fragment $task")
+                        update(editedTask)
+                    }
+                }
+            }
+
             findNavController().navigateUp()
 
         }
 
         binding.deleteBut.setOnClickListener {
-//            val curTask = extractor.extract()
-//            viewModel.delete(curTask)
+            val curTask = viewModel.currentTaskLD.value
+            curTask?.map { task ->
+                viewModel.delete(task)
+            }
             findNavController().navigateUp()
         }
+    }
+
+    private fun setExistingTask(taskId: String) {
+        viewModel.getById(taskId)
+        viewModel.currentTaskLD.observe(viewLifecycleOwner) { task ->
+            when (task) {
+                is Result.Success -> expandExistingTask(task.value)
+                is Result.Error -> TODO()
+            }
+        }
+    }
+
+    private fun expandExistingTask(task: Task) {
+        binding.taskDescription.setText(task.description)
+//        binding.taskDeadline
     }
 
     override fun onPause() {

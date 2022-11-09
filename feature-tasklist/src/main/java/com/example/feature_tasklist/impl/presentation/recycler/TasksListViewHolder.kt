@@ -11,7 +11,7 @@ class TasksListViewHolder(
 
     fun bindTask(task: Task, listener: TaskClickListener) {
         binding.apply {
-            taskName.text = task.text
+            taskName.text = task.description
             //binding.taskPriorityIcon
             taskDeadline.text = task.deadline
             taskCompletionCb.isChecked = task.completion

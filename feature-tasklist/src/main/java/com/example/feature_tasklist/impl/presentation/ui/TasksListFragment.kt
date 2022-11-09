@@ -1,6 +1,7 @@
 package com.example.feature_tasklist.impl.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -80,11 +81,6 @@ class TasksListFragment : Fragment(), TaskClickListener {
         }
     }
 
-    private fun goToTaskDetails(task: Task) {
-        // TODO: send task to edit fragment without direct connection between feature packages
-//        findNavController().navigate(R.id.list_to_edit)
-    }
-
     private fun setUpRecycler() {
 
         val tasksRecyclerView = binding.todoRecyclerView
@@ -99,7 +95,8 @@ class TasksListFragment : Fragment(), TaskClickListener {
     }
 
     override fun onItemClick(task: Task) {
-        goToTaskDetails(task)
+        Log.e("MMM", "onItemClick: ${task}")
+        navigation.editExistingTask(task.id)
     }
 
     override fun onCheckboxClick(task: Task, isCompleted: Boolean) {

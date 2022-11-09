@@ -9,7 +9,9 @@ interface TaskRepository {
 
     suspend fun update(task: Task)
 
-    suspend fun delete(id: String)
+    suspend fun delete(id: Long)
 
     fun getAll(): Flow<List<Task>>
+
+    fun getById(id: Long): Flow<com.example.core_utils.datawrappers.Result<Task>>
 }

@@ -2,7 +2,6 @@ package com.example.todolistyandex.routing
 
 import android.content.Context
 import android.util.Log
-import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import com.example.feature_tasklist.impl.presentation.navigation.TasksListNavigation
@@ -21,29 +20,43 @@ class Navigator @Inject constructor(
 
     private var navContr: NavController? = null
 
+    @Inject
+    lateinit var uriCreator: UriCreator
+
     override fun addNewTask() {
         featureTaskEdit.get().starter().start()
+        val uri = uriCreator.create(
+            uriRes = R.string.uri_task_edit_expect_argument
+        )
+
         val request = NavDeepLinkRequest.Builder
-            .fromUri(context.getString(R.string.uri_task_edit).toUri())
+            .fromUri(uri)
             .build()
         navContr?.navigate(request)
-
-        Log.e("MMMM", "NAVIGATed", )
     }
 
-    override fun editExistingTask(taskId: String) {
+    override fun editExistingTask(taskId: Long) {
         featureTaskEdit.get().starter().start()
-        //TODO add logic
+        val uri = uriCreator.createWithArgs(
+            uriRes = R.string.uri_task_edit_expect_argument,
+            argsPlaceHolderRes = R.string.task_id,
+            args = taskId.toString()
+        )
+        val request = NavDeepLinkRequest.Builder
+            .fromUri(uri)
+            .build()
+        Log.e("MMM", "Navigator edit existing: taskId $taskId and uri $uri")
+        navContr?.navigate(request)
     }
 
 
     fun bind(navController: NavController) {
         navContr = navController
-        Log.e("MMMM", "NAVIGATOR bind", )
+        Log.e("MMMM", "NavController bind")
     }
 
     fun unbind() {
         navContr = null
-        Log.e("MMMM", "NAVIGATOR unbind", )
+        Log.e("MMMM", "NavController unbind")
     }
 }

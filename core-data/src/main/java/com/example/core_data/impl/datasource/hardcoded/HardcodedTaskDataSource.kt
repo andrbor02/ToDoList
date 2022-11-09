@@ -25,7 +25,7 @@ override fun getTasksList(): List<Task> {
 
         val task1 = Task(
             id = 44,
-            text = "дела должны быть максимально разнообразны, чтобы покрыть все комбинации возможных значений и проверить работу экрана наиболее полным образом",
+            description = "дела должны быть максимально разнообразны, чтобы покрыть все комбинации возможных значений и проверить работу экрана наиболее полным образом",
             priority = TaskPriority.High,
             deadline = "13.05.2020",
             false,
@@ -36,7 +36,7 @@ override fun getTasksList(): List<Task> {
 
         val task2 = Task(
             id = 44,
-            text = "дела должны быть максимально разнообразны",
+            description = "дела должны быть максимально разнообразны",
             priority = TaskPriority.High,
             deadline = "13.05.2020",
             false,
@@ -47,7 +47,7 @@ override fun getTasksList(): List<Task> {
 
         val task3 = Task(
             id = 44,
-            text = "дела должны быть",
+            description = "дела должны быть",
             priority = TaskPriority.High,
             deadline = "13.05.2020",
             false,
