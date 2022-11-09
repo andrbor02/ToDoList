@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "task_table")
-internal data class DBTask(
+data class DBTask(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "task_id")
     val id: Long,

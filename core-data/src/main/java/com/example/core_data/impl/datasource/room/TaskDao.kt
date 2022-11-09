@@ -5,7 +5,7 @@ import com.example.core_data.impl.model.DBTask
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-internal interface TaskDao {
+interface TaskDao {
 
     @Query("SELECT * FROM task_table")
     fun getTasks(): Flow<List<DBTask>>

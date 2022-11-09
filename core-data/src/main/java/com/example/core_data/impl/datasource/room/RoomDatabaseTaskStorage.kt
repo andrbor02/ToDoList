@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 import com.example.core_data.impl.model.DBTask
 
 @Database(entities = [DBTask::class], version = 1, exportSchema = false)
-internal abstract class RoomDatabaseTaskStorage : RoomDatabase() {
+abstract class RoomDatabaseTaskStorage : RoomDatabase() {
 
     abstract fun taskDao(): TaskDao
 

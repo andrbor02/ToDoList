@@ -6,11 +6,11 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(
+@Component (
     dependencies = [DataDependencies::class],
     modules = [CoreDataModule::class]
-)
-internal interface CoreDataComponent : DataApi {
+        )
+interface CoreDataComponent: DataApi {
 
     @Component.Factory
     interface Factory {

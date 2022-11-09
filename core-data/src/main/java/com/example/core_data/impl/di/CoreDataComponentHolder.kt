@@ -3,7 +3,7 @@ package com.example.core_data.impl.di
 import com.example.core_data.api.DataApi
 import com.example.core_data.api.DataDependencies
 
-internal object CoreDataComponentHolder : ComponentHolder<DataApi, DataDependencies> {
+object CoreDataComponentHolder : ComponentHolder<DataApi, DataDependencies> {
 
     private var component: CoreDataComponent? = null
 

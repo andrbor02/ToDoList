@@ -3,7 +3,7 @@ package com.example.core_data.impl.mapper
 import com.example.core_data.impl.model.DBTask
 import com.example.core_model.Task
 
-internal interface Mappers {
+interface Mappers {
     interface DataToDomainTaskMapper {
         operator fun invoke(dbTask: DBTask): Task
     }

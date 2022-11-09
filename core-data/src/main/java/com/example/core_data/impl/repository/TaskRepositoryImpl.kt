@@ -13,7 +13,7 @@ import com.example.core_utils.extensions.asResult
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-internal class TaskRepositoryImpl @Inject constructor(
+class TaskRepositoryImpl @Inject constructor(
     private val domainToDataTaskMapper: DomainToDataTaskMapper,
     private val dataToDomainTaskMapper: DataToDomainTaskMapper,
     private val taskDao: TaskDao

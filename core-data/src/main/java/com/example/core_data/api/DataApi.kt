@@ -1,6 +1,6 @@
 package com.example.core_data.api
 
-import com.example.core_utils.di.BaseApi
+import com.example.core_data.impl.di.BaseApi
 
 interface DataApi: BaseApi {
 

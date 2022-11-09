@@ -1,4 +1,4 @@
-package com.example.core_utils.di
+package com.example.feature_tasklist.impl.di
 
 interface ComponentHolder<C: BaseApi, D: BaseDependencies> {
 
