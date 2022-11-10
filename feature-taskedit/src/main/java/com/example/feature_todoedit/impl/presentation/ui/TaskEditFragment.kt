@@ -5,10 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.core_model.Task
+import com.example.core_model.TaskPriority
 import com.example.core_utils.datawrappers.Result
 import com.example.feature_todoedit.R
 import com.example.feature_todoedit.databinding.FragmentTaskEditBinding
@@ -21,7 +23,6 @@ import com.example.feature_todoedit.impl.presentation.stateholders.TaskEditViewM
 import javax.inject.Inject
 
 class TaskEditFragment : Fragment() {
-
     private lateinit var extractor: TaskExtractor
 
     private var _binding: FragmentTaskEditBinding? = null
@@ -60,6 +61,10 @@ class TaskEditFragment : Fragment() {
     }
 
     private fun setUpListeners() {
+        binding.priorityBut.setOnClickListener {
+            showPriorityMenu()
+        }
+
         binding.closeBut.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -67,6 +72,7 @@ class TaskEditFragment : Fragment() {
         binding.saveBut.setOnClickListener {
             viewModel.apply {
                 val extractedTask = extractor.extract()
+
                 if (currentTaskLD.value == null) {
                     insert(extractedTask)
                 } else {
@@ -107,7 +113,30 @@ class TaskEditFragment : Fragment() {
 
     private fun expandExistingTask(task: Task) {
         binding.taskDescription.setText(task.description)
-//        binding.taskDeadline
+        binding.taskPriority.text = task.priority.toString()
+    }
+
+    private fun showPriorityMenu() {
+        val menu = PopupMenu(context, binding.priorityBut)
+        menu.inflate(R.menu.menu_priority)
+        menu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.priority_none -> {
+                    binding.taskPriority.text = TaskPriority.None.title
+                    true
+                }
+                R.id.priority_low -> {
+                    binding.taskPriority.text = TaskPriority.Low.title
+                    true
+                }
+                R.id.priority_high -> {
+                    binding.taskPriority.text = TaskPriority.High.title
+                    true
+                }
+                else -> false
+            }
+        }
+        menu.show()
     }
 
     override fun onPause() {
