@@ -129,6 +129,7 @@
                 android:padding="16dp"
                 android:orientation="horizontal"
                 android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:clickable="true">
 
                 <ImageButton

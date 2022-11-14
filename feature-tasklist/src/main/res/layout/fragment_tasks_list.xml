@@ -124,6 +124,7 @@
                 android:layout_marginHorizontal="4dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="61dp"
                 android:text="@string/new_label"
@@ -138,11 +139,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
+        android:clickable="true"
         android:layout_marginBottom="29dp"
+        app:rippleColor="@color/color_gray"
         android:backgroundTint="@color/color_blue"
         android:contentDescription="@string/fab_description"
         android:minHeight="48dp"
         android:minWidth="48dp"
         android:src="@drawable/ic_add" />
+    <!--        TODO replace rippleColor with attr-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
