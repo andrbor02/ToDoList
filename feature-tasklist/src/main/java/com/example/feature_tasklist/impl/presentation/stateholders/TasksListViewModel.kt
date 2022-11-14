@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.core_model.Task
 import com.example.feature_tasklist.impl.domain.usecase.GetTaskListUseCase
 import com.example.feature_tasklist.impl.domain.usecase.UpdateTaskCompletionUseCase
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,8 +22,10 @@ class TasksListViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val list = getTaskListUseCase()
-            list.collect {
-                _taskListLD.value = it
+            list.map { unsortedList ->
+                unsortedList.sortedWith(compareBy({ it.completion }, { it.changeDate }))
+            }.collect { sortedList ->
+                _taskListLD.value = sortedList
             }
         }
     }

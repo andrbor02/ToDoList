@@ -19,6 +19,7 @@ class TaskExtractor(
             taskPriority,
             taskDeadline,
             false,
+            Calendar.getInstance().time.toString(),
             Calendar.getInstance().time.toString()
         )
     }
