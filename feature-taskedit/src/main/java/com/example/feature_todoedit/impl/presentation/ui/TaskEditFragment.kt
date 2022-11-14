@@ -15,9 +15,9 @@ import com.example.core_utils.datawrappers.Result
 import com.example.feature_todoedit.R
 import com.example.feature_todoedit.databinding.FragmentTaskEditBinding
 import com.example.feature_todoedit.impl.di.TaskEditComponentHolder
-import com.example.feature_todoedit.impl.domain.utils.PriorityChecker
 import com.example.feature_todoedit.impl.domain.utils.TaskExtractor
 import com.example.feature_todoedit.impl.domain.utils.TaskMerger
+import com.example.feature_todoedit.impl.domain.utils.deadline.DeadlineController
 import com.example.feature_todoedit.impl.presentation.stateholders.TaskEditViewModel
 import com.example.feature_todoedit.impl.presentation.stateholders.TaskEditViewModelFactory
 import javax.inject.Inject
@@ -113,7 +113,7 @@ class TaskEditFragment : Fragment() {
 
     private fun expandExistingTask(task: Task) {
         binding.taskDescription.setText(task.description)
-        binding.taskPriority.text = task.priority.toString()
+        binding.taskPriority.text = task.priority.title
     }
 
     private fun showPriorityMenu() {
