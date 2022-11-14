@@ -23,7 +23,9 @@ import com.example.feature_todoedit.impl.presentation.stateholders.TaskEditViewM
 import javax.inject.Inject
 
 class TaskEditFragment : Fragment() {
+
     private lateinit var extractor: TaskExtractor
+    private lateinit var deadlineController: DeadlineController
 
     private var _binding: FragmentTaskEditBinding? = null
     private val binding get() = _binding!!
@@ -44,7 +46,11 @@ class TaskEditFragment : Fragment() {
 
         TaskEditComponentHolder.getComponent().inject(this)
 
-        extractor = TaskExtractor(PriorityChecker(), binding)
+        extractor = TaskExtractor(binding)
+        deadlineController = DeadlineController(
+            context = requireContext(),
+            binding = binding
+        )
 
         checkIfTaskExists()
         setUpListeners()
@@ -65,6 +71,10 @@ class TaskEditFragment : Fragment() {
             showPriorityMenu()
         }
 
+        binding.deadlineBut.setOnClickListener {
+            showDatePicker()
+        }
+
         binding.closeBut.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -82,7 +92,6 @@ class TaskEditFragment : Fragment() {
                             currentTask = task
                         )
                         val editedTask = merger.merge()
-                        Log.e("MMM", "task in fragment $task")
                         update(editedTask)
                     }
                 }
@@ -111,9 +120,14 @@ class TaskEditFragment : Fragment() {
         }
     }
 
+    private fun showDatePicker() {
+        deadlineController.changeDeadline()
+    }
+
     private fun expandExistingTask(task: Task) {
         binding.taskDescription.setText(task.description)
         binding.taskPriority.text = task.priority.title
+        binding.taskDeadline.text = task.deadline
     }
 
     private fun showPriorityMenu() {

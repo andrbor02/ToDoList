@@ -1,6 +1,7 @@
 package com.example.core_data.api
 
 import com.example.core_model.Task
+import com.example.core_utils.datawrappers.Result
 import kotlinx.coroutines.flow.Flow
 
 interface TaskRepository {
@@ -13,5 +14,5 @@ interface TaskRepository {
 
     fun getAll(): Flow<List<Task>>
 
-    fun getById(id: Long): Flow<com.example.core_utils.datawrappers.Result<Task>>
+    fun getById(id: Long): Flow<Result<Task>>
 }
