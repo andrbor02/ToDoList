@@ -1,6 +1,7 @@
 package com.example.core_data.impl.di
 
 import android.content.Context
+import com.example.core_data.api.SettingsRepository
 import com.example.core_data.api.TaskRepository
 import com.example.core_data.impl.datasource.hardcoded.HardcodedTaskDataSource
 import com.example.core_data.impl.datasource.room.RoomDatabaseTaskStorage
@@ -8,6 +9,7 @@ import com.example.core_data.impl.datasource.room.TaskDao
 import com.example.core_data.impl.mapper.DataToDomainTaskMapper
 import com.example.core_data.impl.mapper.DomainToDataTaskMapper
 import com.example.core_data.impl.mapper.Mappers
+import com.example.core_data.impl.repository.SettingsRepositoryImpl
 import com.example.core_data.impl.repository.TaskRepositoryImpl
 import dagger.Module
 import dagger.Provides
@@ -37,6 +39,11 @@ class CoreDataModule {
     @Provides
     fun provideTaskRepository(taskRepositoryImpl: TaskRepositoryImpl): TaskRepository {
         return taskRepositoryImpl
+    }
+
+    @Provides
+    fun provideSettingsRepository(settingsRepositoryImpl: SettingsRepositoryImpl): SettingsRepository {
+        return settingsRepositoryImpl
     }
 
     @Provides

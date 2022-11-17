@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -69,15 +70,20 @@ class TasksListFragment : Fragment(), TaskClickListener {
             navigation.addNewTask()
         }
 
-        // TODO: make completed tasks invisible
-//        binding.toggleVisibility.setOnClickListener {
-//            it.foreground = resources.getDrawable(
-//                R.drawable.ic_visibility_off
-//            )
-//        }
+        binding.toggleVisibility.setOnClickListener {
+            val visibility =
+                AppCompatResources.getDrawable(requireContext(), R.drawable.ic_visibility)
+            val visibilityOff =
+                AppCompatResources.getDrawable(requireContext(), R.drawable.ic_visibility_off)
+            viewModel.changeCompletedVisibility()
 
-        binding.imageSwitcher.setOnClickListener {
-            viewModel.visibilityChanged()
+            viewModel.showCompletedLD.observe(viewLifecycleOwner) { isShown ->
+                if (isShown) {
+                    binding.toggleVisibility.setImageDrawable(visibility)
+                } else {
+                    binding.toggleVisibility.setImageDrawable(visibilityOff)
+                }
+            }
         }
     }
 
