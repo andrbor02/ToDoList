@@ -1,5 +1,9 @@
 <resources>
-    <string name="uri_task_edit">TodoList://taskEdit</string>
+    <!--    TODO fix deeplinks growth-->
+    <!--    <string name="uri_task_edit">TodoList://taskEdit</string>-->
+    <string name="uri_task_edit_expect_argument">TodoList://taskEdit/?id={task_id}</string>
+    <string name="task_id">task_id</string>
+
 
     <string name="exit_description">Exit to task list</string>
     <string name="save_but_text">СОХРАНИТЬ</string>

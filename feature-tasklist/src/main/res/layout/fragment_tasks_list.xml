@@ -56,44 +56,18 @@
             <!--                android:layout_gravity="bottom" />-->
             <!--            TODO: Add shadow here-->
 
-            <!--            <ImageButton-->
-            <!--                android:id="@+id/toggle_visibility"-->
-            <!--                android:layout_width="48dp"-->
-            <!--                android:layout_height="48dp"-->
-            <!--                android:layout_gravity="end|bottom"-->
-            <!--                android:layout_marginEnd="25dp"-->
-            <!--                android:background="@android:color/transparent"-->
-            <!--                android:padding="15dp"-->
-            <!--                android:scaleX="1.5"-->
-            <!--                android:scaleY="1.5"-->
-            <!--                android:src="@drawable/visibility_icon_selector" />-->
-
-
-            <ImageSwitcher
-                android:id="@+id/image_switcher"
+            <ImageButton
+                android:id="@+id/toggle_visibility"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="end|bottom"
-                android:scaleX="2"
-                android:scaleY="2"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="25dp"
                 android:background="@android:color/transparent"
-                android:padding="16dp">
+                android:padding="15dp"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:contentDescription="@string/hide_or_show_completed_tasks" />
 
-                <ImageView
-                    android:id="@+id/ic_vis_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_visibility"
-                    android:contentDescription="@string/visibility_on_description" />
-
-                <ImageView
-                    android:id="@+id/ic_vis_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_visibility_off"
-                    android:contentDescription="@string/visibility_off_description" />
-            </ImageSwitcher>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -116,7 +90,7 @@
                 android:scrollbarAlwaysDrawVerticalTrack="true" />
 
             <TextView
-                android:id="@+id/new_task_rv_but"
+                android:id="@+id/new_task_recycler_view_but"
                 style="@style/TextStyle.Body"
                 android:layout_width="match_parent"
                 android:layout_height="63sp"
@@ -124,6 +98,7 @@
                 android:layout_marginHorizontal="4dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:gravity="center_vertical"
                 android:paddingHorizontal="61dp"
                 android:text="@string/new_label"
@@ -138,11 +113,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
+        android:clickable="true"
         android:layout_marginBottom="29dp"
+        app:rippleColor="@color/color_gray"
         android:backgroundTint="@color/color_blue"
         android:contentDescription="@string/fab_description"
         android:minHeight="48dp"
         android:minWidth="48dp"
         android:src="@drawable/ic_add" />
+    <!--        TODO replace rippleColor with attr-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

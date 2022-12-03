@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.core_model.Task
 import com.example.feature_tasklist.databinding.TaskItemBinding
+import com.example.feature_tasklist.impl.presentation.recycler.TasksListViewHolder
 
 class TasksListAdapter(
     tasksListDiffUtil: TasksListDiffUtil,

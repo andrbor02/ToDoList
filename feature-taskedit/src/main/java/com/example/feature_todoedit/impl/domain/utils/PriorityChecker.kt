@@ -3,7 +3,7 @@ package com.example.feature_todoedit.impl.domain.utils
 import com.example.core_model.TaskPriority
 import com.example.feature_todoedit.databinding.FragmentTaskEditBinding
 
-class PriorityChecker {
+object PriorityChecker {
     operator fun invoke(binding: FragmentTaskEditBinding): TaskPriority {
         return when (binding.taskPriority.text.toString()) {
             TaskPriority.None.title -> TaskPriority.None

@@ -9,6 +9,11 @@
         android:name="com.example.feature_todoedit.impl.presentation.ui.TaskEditFragment"
         android:label="TaskEditFragment">
 
-        <deepLink app:uri="@string/uri_task_edit" />
+        <deepLink app:uri="@string/uri_task_edit_expect_argument" />
+
+        <argument
+            android:name="@string/task_id"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
 </navigation>

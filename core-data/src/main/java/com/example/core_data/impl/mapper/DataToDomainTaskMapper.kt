@@ -11,12 +11,11 @@ class DataToDomainTaskMapper @Inject constructor() : Mappers.DataToDomainTaskMap
             TaskPriority.None.title -> TaskPriority.None
             TaskPriority.Low.title -> TaskPriority.Low
             TaskPriority.High.title -> TaskPriority.High
-            else -> TaskPriority.None
-//            else -> throw IllegalArgumentException("Wrong task priority from DB")
+            else -> throw IllegalArgumentException("Wrong task priority from DB")
         }
 
         return Task(
-            dbTask.id.toString(),
+            dbTask.id,
             dbTask.text,
             taskPriority,
             dbTask.deadline,

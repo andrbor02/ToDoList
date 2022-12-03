@@ -7,4 +7,5 @@
     <string name="visibility_on_description">Make completed tasks visible</string>
     <string name="visibility_off_description">Make completed tasks invisible</string>
     <string name="fab_description">Add new task into list</string>
+    <string name="hide_or_show_completed_tasks">hide or show completed tasks</string>
 </resources>

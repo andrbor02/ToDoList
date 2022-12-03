@@ -64,7 +64,7 @@ class TaskListProducer() {
 
     private class TaskProducer() {
 
-        private val defaultId = "0"
+        private val defaultId = 0L
         private val defaultText = "Default task"
         private val defaultPriority = TaskPriority.None
         private val defaultCreationDate = "Default creation date"
@@ -77,7 +77,7 @@ class TaskListProducer() {
 
         val minimalInitializedTask = Task(
             id = defaultId,
-            text = defaultText,
+            description = defaultText,
             priority = defaultPriority,
             creationDate = defaultCreationDate,
             completion = defaultCompletion
@@ -87,7 +87,7 @@ class TaskListProducer() {
 
         val taskInitializedWithoutDeadline = Task(
             id = defaultId,
-            text = defaultText,
+            description = defaultText,
             priority = defaultPriority,
             creationDate = defaultCreationDate,
             completion = defaultCompletion,
@@ -97,7 +97,7 @@ class TaskListProducer() {
 
         val taskInitializedWithoutChangeDate = Task(
             id = defaultId,
-            text = defaultText,
+            description = defaultText,
             priority = defaultPriority,
             creationDate = defaultCreationDate,
             completion = defaultCompletion,
@@ -107,7 +107,7 @@ class TaskListProducer() {
 
         val fullyInitializedTask = Task(
             id = defaultId,
-            text = defaultText,
+            description = defaultText,
             priority = defaultPriority,
             creationDate = defaultCreationDate,
             completion = defaultCompletion,

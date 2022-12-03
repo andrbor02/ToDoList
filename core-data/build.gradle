@@ -34,8 +34,11 @@ android {
 dependencies {
 
     implementation(project(":core-model"))
+    implementation(project(":core-utils"))
 
+    // Test
     testImplementation libs.junit4
+    testImplementation libs.junit5
 
     // DI
     implementation libs.dagger

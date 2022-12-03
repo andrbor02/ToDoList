@@ -1,9 +1,11 @@
 package com.example.feature_tasklist.impl.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,40 +51,9 @@ class TasksListFragment : Fragment(), TaskClickListener {
 
         setUpRecycler()
         setUpListeners()
-
-        viewModel.taskListLD.observe(viewLifecycleOwner) { newList ->
-            newList.let { adapter?.submitList(it) }
-            updateCompletedCounter(newList)
-        }
+        setUpObservers()
 
         return view
-    }
-
-    private fun setUpListeners() {
-
-        binding.fab.setOnClickListener {
-            navigation.addNewTask()
-        }
-
-        binding.newTaskRvBut.setOnClickListener {
-            navigation.addNewTask()
-        }
-
-        // TODO: make completed tasks invisible
-//        binding.toggleVisibility.setOnClickListener {
-//            it.foreground = resources.getDrawable(
-//                R.drawable.ic_visibility_off
-//            )
-//        }
-
-        binding.imageSwitcher.setOnClickListener {
-            viewModel.visibilityChanged()
-        }
-    }
-
-    private fun goToTaskDetails(task: Task) {
-        // TODO: send task to edit fragment without direct connection between feature packages
-//        findNavController().navigate(R.id.list_to_edit)
     }
 
     private fun setUpRecycler() {
@@ -98,23 +69,57 @@ class TasksListFragment : Fragment(), TaskClickListener {
         tasksRecyclerView.adapter = adapter
     }
 
+    private fun setUpListeners() {
+
+        binding.fab.setOnClickListener {
+            navigation.addNewTask()
+        }
+
+        binding.newTaskRecyclerViewBut.setOnClickListener {
+            navigation.addNewTask()
+        }
+
+        binding.toggleVisibility.setOnClickListener {
+            viewModel.changeCompletedVisibility()
+        }
+    }
+
+    private fun setUpObservers() {
+        viewModel.showCompletedLD.observe(viewLifecycleOwner) { isShown ->
+            val visibilityOn = AppCompatResources.getDrawable(
+                requireContext(),
+                R.drawable.ic_visibility_on
+            )
+            val visibilityOff = AppCompatResources.getDrawable(
+                requireContext(),
+                R.drawable.ic_visibility_off
+            )
+            if (isShown) {
+                binding.toggleVisibility.setImageDrawable(visibilityOn)
+            } else {
+                binding.toggleVisibility.setImageDrawable(visibilityOff)
+            }
+        }
+
+        viewModel.taskListLD.observe(viewLifecycleOwner) { newList ->
+            newList.let { adapter?.submitList(it) }
+        }
+
+        viewModel.completedTasksNumberLD.observe(viewLifecycleOwner) { completedNumber ->
+            val counterLabel = getString(R.string.completed_counter_label)
+            val newCounter = "$counterLabel $completedNumber"
+
+            binding.completedCounter.text = newCounter
+        }
+    }
+
     override fun onItemClick(task: Task) {
-        goToTaskDetails(task)
+        Log.e("MMM", "onItemClick: ${task}")
+        navigation.editExistingTask(task.id)
     }
 
     override fun onCheckboxClick(task: Task, isCompleted: Boolean) {
         viewModel.changeTaskCompletion(task, isCompleted)
-    }
-
-    private fun updateCompletedCounter(taskList: List<Task>) {
-        val countCompleted = taskList.filter { task ->
-            task.completion == true
-        }.size
-
-        val counterLabel = getString(R.string.completed_counter_label)
-        val newCounter = "$counterLabel $countCompleted"
-
-        binding.completedCounter.text = newCounter
     }
 
     override fun onDestroyView() {

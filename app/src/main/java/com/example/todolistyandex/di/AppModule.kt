@@ -3,6 +3,7 @@ package com.example.todolistyandex.di
 import android.content.Context
 import com.example.core_data.api.DataApi
 import com.example.core_data.api.DataDependencies
+import com.example.core_data.api.SettingsRepository
 import com.example.core_data.api.TaskRepository
 import com.example.core_data.impl.di.CoreDataComponentHolder
 import com.example.feature_tasklist.api.TaskListApi
@@ -26,8 +27,12 @@ class AppModule {
         navigation: Navigator
     ): TaskListDependencies {
         return object : TaskListDependencies {
-            override fun repository(): TaskRepository {
+            override fun taskRepository(): TaskRepository {
                 return coreDataApi.getTaskRepository()
+            }
+
+            override fun settingsRepository(): SettingsRepository {
+                return coreDataApi.getSettingsRepository()
             }
 
             override fun navigation(): TasksListNavigation {
