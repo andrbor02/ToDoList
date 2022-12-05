@@ -25,6 +25,8 @@ espresso = "3.4.0"
 # Retrofit
 retrofit = "2.9.0"
 retrofitgson = "2.5.0"
+#Firebase
+firebase-database = "20.1.0"
 # Room
 room = "2.4.3"
 # Dagger
@@ -56,6 +58,8 @@ espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "esp
 # Retrofit
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofitgson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitgson" }
+# Firebase
+firebase-database = { module = "com.google.firebase:firebase-database-ktx", version.ref = "firebase-database" }
 # Room
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
