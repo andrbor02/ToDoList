@@ -24,8 +24,9 @@ import javax.inject.Inject
 
 class TasksListFragment : Fragment(), TaskClickListener {
 
-    private var _binding: FragmentTasksListBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentTasksListBinding by lazy(LazyThreadSafetyMode.NONE) {
+        FragmentTasksListBinding.inflate(layoutInflater)
+    }
 
     @Inject
     lateinit var tasksListViewModelFactory: TasksListViewModelFactory
@@ -44,7 +45,6 @@ class TasksListFragment : Fragment(), TaskClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTasksListBinding.inflate(layoutInflater)
         val view = binding.root
 
         TaskListComponentHolder.getComponent().inject(this)
@@ -120,11 +120,6 @@ class TasksListFragment : Fragment(), TaskClickListener {
 
     override fun onCheckboxClick(task: Task, isCompleted: Boolean) {
         viewModel.changeTaskCompletion(task, isCompleted)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onDestroy() {
