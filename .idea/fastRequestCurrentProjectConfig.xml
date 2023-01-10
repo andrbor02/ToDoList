@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="fastRequestCurrentProjectConfig">
+    <option name="cookieList">
+      <list>
+        <DataMapping>
+          <option name="type" value="todolist-c0c17-default-rtdb.europe-west1.firebasedatabase.app" />
+          <option name="value" value="__Host-GAPS=1:1VPvzjF38AcLKfCdhnuNRwqj6AaH5w:TDEBkrRXMTv-KGtl; Expires" />
+        </DataMapping>
+      </list>
+    </option>
+    <option name="domain" value="todolist" />
+    <option name="enableEnv" value="ToDoListEnv" />
+    <option name="enableProject" value="ToDoList" />
+  </component>
+</project>

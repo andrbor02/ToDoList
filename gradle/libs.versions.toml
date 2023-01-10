@@ -25,6 +25,8 @@ espresso = "3.4.0"
 # Retrofit
 retrofit = "2.9.0"
 retrofitgson = "2.5.0"
+# OkHttp
+okhttp = "4.10.0"
 #Firebase
 firebase-database = "20.1.0"
 # Room
@@ -58,6 +60,9 @@ espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "esp
 # Retrofit
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofitgson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitgson" }
+# OkHttp3
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+logginginterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 # Firebase
 firebase-database = { module = "com.google.firebase:firebase-database-ktx", version.ref = "firebase-database" }
 # Room
