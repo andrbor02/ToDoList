@@ -12,6 +12,10 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AppModule::class,
+        FeatureTaskListProviderModule::class,
+        FeatureTaskEditProviderModule::class,
+        CoreDataProviderModule::class,
+
         CoreDataModule::class,
         NetworkModule::class
     ]

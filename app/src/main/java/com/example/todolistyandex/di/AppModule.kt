@@ -3,9 +3,9 @@ package com.example.todolistyandex.di
 import android.content.Context
 import com.example.core_data.api.DataApi
 import com.example.core_data.api.DataDependencies
-import com.example.core_data.api.SettingsRepository
-import com.example.core_data.api.TaskRepository
-import com.example.core_data.impl.di.CoreDataComponentHolder
+import com.example.core_data.api.repository.SettingsRepository
+import com.example.core_data.api.repository.TaskRepository
+import com.example.core_data.impl.di.CoreDataComponent
 import com.example.feature_tasklist.api.TaskListApi
 import com.example.feature_tasklist.impl.di.TaskListComponentHolder
 import com.example.feature_tasklist.impl.di.TaskListDependencies
@@ -20,6 +20,11 @@ import javax.inject.Singleton
 
 @Module
 class AppModule {
+
+}
+
+@Module
+class FeatureTaskListProviderModule {
 
     @Provides
     fun provideTaskListDependencies(
@@ -47,6 +52,10 @@ class AppModule {
         return TaskListComponentHolder.get()
     }
 
+}
+
+@Module
+class FeatureTaskEditProviderModule {
     @Singleton
     @Provides
     fun provideTaskEditDependencies(
@@ -65,6 +74,11 @@ class AppModule {
         return TaskEditComponentHolder.get()
     }
 
+}
+
+@Module
+class CoreDataProviderModule {
+
     @Singleton
     @Provides
     fun provideCoreDataDependencies(context: Context): DataDependencies {
@@ -77,7 +91,7 @@ class AppModule {
 
     @Provides
     fun provideCoreDataApi(dependencies: DataDependencies): DataApi {
-        CoreDataComponentHolder.init(dependencies)
-        return CoreDataComponentHolder.get()
+        return CoreDataComponent.initAndGet(dependencies)
     }
+
 }
