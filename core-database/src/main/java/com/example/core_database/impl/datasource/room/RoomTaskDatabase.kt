@@ -5,24 +5,25 @@ import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.core_data.impl.model.DBTask
+import com.example.core_data.impl.model.DatabaseTask
+import com.example.core_database.impl.datasource.room.TaskDao
 
-@Database(entities = [DBTask::class], version = 1, exportSchema = false)
-abstract class RoomDatabaseTaskStorage : RoomDatabase() {
+@Database(entities = [DatabaseTask::class], version = 1, exportSchema = false)
+abstract class RoomTaskDatabase : RoomDatabase() {
 
     abstract fun taskDao(): TaskDao
 
     companion object {
         @Volatile
-        private var INSTANCE: RoomDatabaseTaskStorage? = null
+        private var INSTANCE: RoomTaskDatabase? = null
 
         fun getDatabase(
             context: Context
-        ): RoomDatabaseTaskStorage {
+        ): RoomTaskDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    RoomDatabaseTaskStorage::class.java,
+                    RoomTaskDatabase::class.java,
                     "task_list_database"
                 )
                     .build()
