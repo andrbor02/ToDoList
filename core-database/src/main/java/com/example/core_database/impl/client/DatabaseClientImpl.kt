@@ -6,7 +6,7 @@ import com.example.core_database.impl.datasource.room.RoomTaskDataSource
 import com.example.core_database.impl.datasource.room.TaskDao
 import javax.inject.Inject
 
-class DatabaseCLientImpl @Inject constructor(
+class DatabaseClientImpl @Inject constructor(
     private val taskDao: TaskDao,
     private val settingsDataSource: SettingsDataSource
 ) : DatabaseClient {

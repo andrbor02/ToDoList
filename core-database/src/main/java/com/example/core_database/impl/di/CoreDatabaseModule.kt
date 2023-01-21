@@ -3,8 +3,8 @@ package com.example.core_data.impl.di
 import android.content.Context
 import com.example.core_data.impl.datasource.room.RoomTaskDatabase
 import com.example.core_data.impl.datasource.sharedprefs.SharedPreferencesSettingsDataSource
-import com.example.core_database.impl.client.DatabaseCLientImpl
 import com.example.core_database.impl.client.DatabaseClient
+import com.example.core_database.impl.client.DatabaseClientImpl
 import com.example.core_database.impl.datasource.SettingsDataSource
 import com.example.core_database.impl.datasource.room.TaskDao
 import dagger.Module
@@ -38,7 +38,7 @@ class CoreDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabaseClient(databaseCLientImpl: DatabaseCLientImpl): DatabaseClient {
+    fun provideDatabaseClient(databaseCLientImpl: DatabaseClientImpl): DatabaseClient {
         return databaseCLientImpl
     }
 
