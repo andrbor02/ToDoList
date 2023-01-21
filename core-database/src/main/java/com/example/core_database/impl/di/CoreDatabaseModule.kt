@@ -38,8 +38,8 @@ class CoreDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabaseClient(databaseCLientImpl: DatabaseClientImpl): DatabaseClient {
-        return databaseCLientImpl
+    fun provideDatabaseClient(databaseClientImpl: DatabaseClientImpl): DatabaseClient {
+        return databaseClientImpl
     }
 
 }
