@@ -1,4 +1,4 @@
-package com.example.core_data.api
+package com.example.core_data.api.repository
 
 import com.example.core_model.Task
 import com.example.core_utils.datawrappers.Result

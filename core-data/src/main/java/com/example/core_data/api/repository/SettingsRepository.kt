@@ -1,4 +1,4 @@
-package com.example.core_data.api
+package com.example.core_data.api.repository
 
 import kotlinx.coroutines.flow.Flow
 
