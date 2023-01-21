@@ -1,6 +1,6 @@
 package com.example.core_data.impl.mapper
 
-import com.example.core_data.impl.model.DBTask
+import com.example.core_data.impl.model.DatabaseTask
 import com.example.core_model.Task
 import com.example.core_model.TaskPriority
 import org.junit.Assert.assertEquals
@@ -21,7 +21,7 @@ class DomainToDataTaskMapperTest {
             changeDate = "01.02.1970"
         )
 
-        val expected = DBTask(
+        val expected = DatabaseTask(
             id = 41328934,
             text = "Test task",
             priority = "Нет",
@@ -48,7 +48,7 @@ class DomainToDataTaskMapperTest {
             changeDate = "01.02.1970"
         )
 
-        val expected = DBTask(
+        val expected = DatabaseTask(
             id = 41328934,
             text = "Test task",
             priority = "Низкий",
@@ -75,7 +75,7 @@ class DomainToDataTaskMapperTest {
             changeDate = "01.02.1970"
         )
 
-        val expected = DBTask(
+        val expected = DatabaseTask(
             id = 41328934,
             text = "Test task",
             priority = "Высокий",
