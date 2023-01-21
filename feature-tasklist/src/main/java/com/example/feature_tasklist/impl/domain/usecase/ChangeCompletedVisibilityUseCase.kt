@@ -1,6 +1,6 @@
 package com.example.feature_tasklist.impl.domain.usecase
 
-import com.example.core_data.api.SettingsRepository
+import com.example.core_data.api.repository.SettingsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
