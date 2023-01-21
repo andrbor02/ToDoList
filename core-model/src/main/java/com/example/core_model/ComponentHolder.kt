@@ -1,4 +1,4 @@
-package com.example.core_data.impl.di
+package com.example.core_model
 
 interface ComponentHolder<C: BaseApi, D: BaseDependencies> {
     fun init(dependencies: D)
