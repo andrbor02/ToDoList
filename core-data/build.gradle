@@ -35,6 +35,7 @@ dependencies {
 
     implementation(project(":core-model"))
     implementation(project(":core-utils"))
+    implementation(project(":core-database"))
 
     // Test
     testImplementation libs.junit4
