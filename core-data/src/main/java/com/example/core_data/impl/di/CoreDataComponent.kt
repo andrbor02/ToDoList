@@ -5,21 +5,35 @@ import com.example.core_data.api.DataDependencies
 import dagger.Component
 import javax.inject.Singleton
 
-@Singleton
-@Component (
-    dependencies = [DataDependencies::class],
-    modules = [CoreDataModule::class]
-        )
-interface CoreDataComponent: DataApi {
 
+@Component(
+    dependencies = [DataDependencies::class],
+    modules = [
+        CoreDataModule::class,
+        CoreDatabaseProviderModule::class,
+        CoreDatabaseModule::class,
+    ]
+)
+@Singleton
+interface CoreDataComponent: DataApi {
     @Component.Factory
     interface Factory {
         fun create(dependencies: DataDependencies): CoreDataComponent
     }
 
     companion object {
+
+        private var component: CoreDataComponent? = null
+
         fun initAndGet(dependencies: DataDependencies): CoreDataComponent {
-            return DaggerCoreDataComponent.factory().create(dependencies)
+            if (component == null) {
+                synchronized(CoreDataComponent::class.java) {
+                    if (component == null) {
+                        component = DaggerCoreDataComponent.factory().create(dependencies)
+                    }
+                }
+            }
+            return component!!
         }
     }
 }
