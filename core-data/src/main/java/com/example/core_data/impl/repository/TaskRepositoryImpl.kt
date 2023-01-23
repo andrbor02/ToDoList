@@ -63,6 +63,13 @@ class TaskRepositoryImpl @Inject constructor(
     }
 
     override fun getAll(): Flow<List<Task>> {
+//                networkList.collect { networkList ->
+//            networkDataSource.synchronizeTaskList(
+//                networkList.associate { networkTaskWithId ->
+//                    networkTaskWithId.toPair()
+//                }
+//            )
+//        }
         return taskList
     }
 

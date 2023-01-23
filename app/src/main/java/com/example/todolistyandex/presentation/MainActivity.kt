@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        (applicationContext as App).
-        appComponent.injectToMainActivity(this)
+        (applicationContext as App).appComponent.injectToMainActivity(this)
     }
 
     override fun onResume() {
