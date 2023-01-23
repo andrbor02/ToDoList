@@ -34,6 +34,7 @@ android {
 
 dependencies {
     implementation(project(":core-model"))
+    implementation(project(":core-utils"))
 
     implementation libs.junitktx
     implementation libs.firebase.database
