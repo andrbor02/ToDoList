@@ -27,8 +27,9 @@ class TaskEditFragment : Fragment() {
     private lateinit var extractor: TaskExtractor
     private lateinit var deadlineController: DeadlineController
 
-    private var _binding: FragmentTaskEditBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentTaskEditBinding by lazy(LazyThreadSafetyMode.NONE) {
+        FragmentTaskEditBinding.inflate(layoutInflater)
+    }
 
     @Inject
     lateinit var taskEditViewModelFactory: TaskEditViewModelFactory
@@ -41,7 +42,6 @@ class TaskEditFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTaskEditBinding.inflate(layoutInflater)
         val view = binding.root
 
         TaskEditComponentHolder.getComponent().inject(this)
@@ -157,10 +157,4 @@ class TaskEditFragment : Fragment() {
         super.onPause()
         TaskEditComponentHolder.reset()
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 }

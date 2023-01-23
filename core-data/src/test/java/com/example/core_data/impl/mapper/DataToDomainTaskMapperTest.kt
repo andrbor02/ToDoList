@@ -1,6 +1,6 @@
 package com.example.core_data.impl.mapper
 
-import com.example.core_data.impl.model.DBTask
+import com.example.core_data.impl.model.DatabaseTask
 import com.example.core_model.Task
 import com.example.core_model.TaskPriority
 import org.junit.Assert.assertEquals
@@ -11,7 +11,7 @@ class DataToDomainTaskMapperTest {
     @Test
     fun testMapperNonePriority() {
         val mapper = DataToDomainTaskMapper()
-        val dbTask = DBTask(
+        val dbTask = DatabaseTask(
             id = 41328934,
             text = "Test task",
             priority = "Нет",
@@ -39,7 +39,7 @@ class DataToDomainTaskMapperTest {
     @Test
     fun testMapperLowPriority() {
         val mapper = DataToDomainTaskMapper()
-        val dbTask = DBTask(
+        val dbTask = DatabaseTask(
             id = 41328934,
             text = "Test task",
             priority = "Низкий",
@@ -67,7 +67,7 @@ class DataToDomainTaskMapperTest {
     @Test
     fun testMapperHighPriority() {
         val mapper = DataToDomainTaskMapper()
-        val dbTask = DBTask(
+        val dbTask = DatabaseTask(
             id = 41328934,
             text = "Test task",
             priority = "Высокий",
@@ -94,7 +94,7 @@ class DataToDomainTaskMapperTest {
     @Test(expected = IllegalArgumentException::class)
     fun testMapperInvalid() {
         val mapper = DataToDomainTaskMapper()
-        val dbTask = DBTask(
+        val dbTask = DatabaseTask(
             id = 41328934,
             text = "Test task",
             priority = "Случайный приоритет",

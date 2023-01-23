@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -32,8 +33,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":core-model"))
+    implementation(project(":core-utils"))
 
     implementation libs.junitktx
+    implementation libs.firebase.database
     testImplementation libs.junit4
 
     // DI
@@ -43,4 +47,8 @@ dependencies {
     // Retrofit
     implementation libs.retrofit
     implementation libs.retrofitgson
+
+    // OkHttp
+    implementation libs.okhttp
+    implementation libs.logginginterceptor
 }

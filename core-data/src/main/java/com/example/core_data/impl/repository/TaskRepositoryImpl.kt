@@ -2,28 +2,41 @@ package com.example.core_data.impl.repository
 
 import android.util.Log
 import androidx.annotation.WorkerThread
-import com.example.core_data.api.TaskRepository
-import com.example.core_data.impl.datasource.room.TaskDao
+import com.example.core_data.api.repository.TaskRepository
 import com.example.core_data.impl.mapper.DataToDomainTaskMapper
 import com.example.core_data.impl.mapper.DomainToDataTaskMapper
-import com.example.core_data.impl.model.DBTask
+import com.example.core_data.impl.mapper.DomainToNetworkWithIdTaskMapper
+import com.example.core_data.impl.model.DatabaseTask
+import com.example.core_database.impl.client.DatabaseClient
 import com.example.core_model.Task
+import com.example.core_network.impl.client.NetworkClient
 import com.example.core_utils.datawrappers.*
-import com.example.core_utils.extensions.asResult
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class TaskRepositoryImpl @Inject constructor(
     private val domainToDataTaskMapper: DomainToDataTaskMapper,
     private val dataToDomainTaskMapper: DataToDomainTaskMapper,
-    private val taskDao: TaskDao
+    private val domainToNetworkWithIdTaskMapper: DomainToNetworkWithIdTaskMapper,
+    databaseClient: DatabaseClient,
+    networkClient: NetworkClient,
 ) : TaskRepository {
 
-    private val dbTaskList: Flow<List<DBTask>> = taskDao.getTasks()
+    private val taskDataSource = databaseClient.getTaskDataSource()
+    private val networkDataSource = networkClient.getTaskRemoteDataSource()
+
+    private val dbTaskList: Flow<List<DatabaseTask>> = taskDataSource.getTaskList()
 
     private val taskList: Flow<List<Task>> = dbTaskList.map { dbList ->
-        dbList.map { DBTask ->
-            dataToDomainTaskMapper(DBTask)
+        dbList.map { databaseTask ->
+            dataToDomainTaskMapper(databaseTask)
+        }
+    }
+
+    private var networkList = dbTaskList.map {
+        it.map {
+            domainToNetworkWithIdTaskMapper(dataToDomainTaskMapper(it))
         }
     }
 
@@ -33,34 +46,41 @@ class TaskRepositoryImpl @Inject constructor(
         if (task.description.isBlank()) {
             return
         }
-        val dbTask = domainToDataTaskMapper(task)
-        taskDao.insertTask(dbTask)
+        val databaseTask = domainToDataTaskMapper(task)
+        taskDataSource.insertTask(databaseTask)
     }
 
     @WorkerThread
     override suspend fun update(task: Task) {
-        val dbTask = domainToDataTaskMapper(task)
+        val databaseTask = domainToDataTaskMapper(task)
         Log.e("MMMM", "Update in repo $task")
-        taskDao.updateTask(dbTask)
+        taskDataSource.updateTask(databaseTask)
     }
 
     @WorkerThread
     override suspend fun delete(id: Long) {
-        taskDao.deleteTask(id)
+        taskDataSource.deleteTask(id)
     }
 
     override fun getAll(): Flow<List<Task>> {
+//                networkList.collect { networkList ->
+//            networkDataSource.synchronizeTaskList(
+//                networkList.associate { networkTaskWithId ->
+//                    networkTaskWithId.toPair()
+//                }
+//            )
+//        }
         return taskList
     }
 
     override fun getById(id: Long): Flow<Result<Task>> {
-        val dbTask: Flow<DBTask> = taskDao.getTaskById(id)
-        val task = dbTask.map {
-            dataToDomainTaskMapper(it)
-        }.asResult()
-
-        return task
+        val databaseTask = taskDataSource.getTaskById(id)
+        return databaseTask.map { result ->
+            when (result) {
+                is Result.Success -> result.map { dataToDomainTaskMapper(it) }
+                is Result.Error -> Result.Error(result.exception)
+            }
+        }
     }
-
 
 }
