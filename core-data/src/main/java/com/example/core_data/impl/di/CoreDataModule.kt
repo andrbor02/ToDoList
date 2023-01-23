@@ -10,6 +10,9 @@ import com.example.core_data.impl.repository.SettingsRepositoryImpl
 import com.example.core_data.impl.repository.TaskRepositoryImpl
 import com.example.core_database.api.DatabaseApi
 import com.example.core_database.api.DatabaseDependencies
+import com.example.core_network.api.NetworkApi
+import com.example.core_network.api.NetworkDependencies
+import com.example.core_network.impl.di.NetworkComponent
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -58,7 +61,25 @@ class CoreDatabaseProviderModule {
 
     @Provides
     fun provideCoreDatabaseApi(dependencies: DatabaseDependencies): DatabaseApi {
-        return CoreDatabaseComponent.initAndGet(dependencies)
+        return DatabaseComponent.initAndGet(dependencies)
+    }
+}
+
+@Module
+class CoreNetworkProviderModule {
+
+    @Singleton
+    @Provides
+    fun provideCoreNetworkDependencies(context: Context): NetworkDependencies {
+        return object : NetworkDependencies {
+            override fun context(): Context {
+                return context
+            }
+        }
     }
 
+    @Provides
+    fun provideCoreNetworkApi(dependencies: NetworkDependencies): NetworkApi {
+        return NetworkComponent.initAndGet(dependencies)
+    }
 }

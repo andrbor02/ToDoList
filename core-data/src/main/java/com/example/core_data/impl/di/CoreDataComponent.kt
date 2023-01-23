@@ -2,6 +2,7 @@ package com.example.core_data.impl.di
 
 import com.example.core_data.api.DataApi
 import com.example.core_data.api.DataDependencies
+import com.example.core_network.impl.di.NetworkModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -10,8 +11,12 @@ import javax.inject.Singleton
     dependencies = [DataDependencies::class],
     modules = [
         CoreDataModule::class,
+
         CoreDatabaseProviderModule::class,
-        CoreDatabaseModule::class,
+        DatabaseModule::class,
+
+        CoreNetworkProviderModule::class,
+        NetworkModule::class,
     ]
 )
 @Singleton
