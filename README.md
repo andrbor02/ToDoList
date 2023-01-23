@@ -8,6 +8,7 @@ ToDoList - приложение со списком задач
 * MVVM
 * Dagger2
 * Room
+* Retrofit
 * Navigation Component
 * Coroutines
 * ViewBinding
