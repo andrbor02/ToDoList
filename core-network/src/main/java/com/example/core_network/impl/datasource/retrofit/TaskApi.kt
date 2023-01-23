@@ -1,6 +1,6 @@
-package com.example.core_network.impl.core.retrofit
+package com.example.core_network.impl.datasource.retrofit
 
-import com.example.core_network.impl.core.model.NetworkTask
+import com.example.core_network.impl.model.NetworkTask
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -20,4 +20,8 @@ interface TaskApi {
 
     @DELETE("list/{taskId}.json")
     fun deleteTask(@Path("taskId") id: String): Call<NetworkTask>
+
+
+    @PUT("list.json")
+    fun synchronizeTaskList(@Body map: Map<String, NetworkTask>): Call<Map<String, NetworkTask>>
 }

@@ -1,4 +1,4 @@
-package com.example.core_network.impl.core.retrofit
+package com.example.core_network.impl.datasource.retrofit
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -6,12 +6,21 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitTestApp {
+object RetrofitClient {
 
-    private val BASE_URL = "https://todolist-c0c17-default-rtdb.europe-west1.firebasedatabase.app/"
-    lateinit var taskApi: TaskApi
+    private const val BASE_URL =
+        "https://todolist-c0c17-default-rtdb.europe-west1.firebasedatabase.app/"
 
-    fun configureAndGet(): TaskApi {
+    private var taskApi: TaskApi? = null
+
+    fun getClient(): TaskApi {
+        if (taskApi == null) {
+            configure()
+        }
+        return taskApi!!
+    }
+
+    private fun configure() {
         val httpLoginInterceptor = HttpLoggingInterceptor()
         httpLoginInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -30,6 +39,5 @@ class RetrofitTestApp {
             .build()
 
         taskApi = retrofit.create(TaskApi::class.java)
-        return taskApi
     }
 }
