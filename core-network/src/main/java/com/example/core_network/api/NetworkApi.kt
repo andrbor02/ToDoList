@@ -1,8 +1,9 @@
 package com.example.core_network.api
 
-import com.example.core_network.impl.di.BaseApi
+import com.example.core_model.BaseApi
+import com.example.core_network.impl.client.NetworkClient
 
-// TODO make network
 interface NetworkApi : BaseApi {
-    fun networkClient()
+
+    fun getNetworkClient(): NetworkClient
 }
