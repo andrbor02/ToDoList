@@ -1,7 +1,7 @@
 package com.example.core_database.impl.datasource.hardcoded
 
 import com.example.core_data.impl.model.DatabaseTask
-import com.example.core_database.impl.datasource.ReadOnlyTaskDataSource
+import com.example.core_database.impl.datasource.ReadOnlyTaskLocalDataSource
 import com.example.core_database.impl.exception.LocalDataSourceException
 import com.example.core_model.TaskPriority
 import com.example.core_utils.datawrappers.Result
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
-class HardcodedTaskDataSource @Inject constructor() : ReadOnlyTaskDataSource {
+class HardcodedTaskDataSource @Inject constructor() : ReadOnlyTaskLocalDataSource {
 
     private val _taskList = MutableStateFlow(emptyList<DatabaseTask>())
     private val taskList = _taskList.asStateFlow()

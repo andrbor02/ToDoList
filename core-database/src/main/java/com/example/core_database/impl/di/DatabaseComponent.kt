@@ -8,24 +8,24 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     dependencies = [DatabaseDependencies::class],
-    modules = [CoreDatabaseModule::class]
+    modules = [DatabaseModule::class]
 )
-interface CoreDatabaseComponent : DatabaseApi {
+interface DatabaseComponent : DatabaseApi {
 
     @Component.Factory
     interface Factory {
-        fun create(dependencies: DatabaseDependencies): CoreDatabaseComponent
+        fun create(dependencies: DatabaseDependencies): DatabaseComponent
     }
 
     companion object {
 
-        private var component: CoreDatabaseComponent? = null
+        private var component: DatabaseComponent? = null
 
-        fun initAndGet(dependencies: DatabaseDependencies): CoreDatabaseComponent {
+        fun initAndGet(dependencies: DatabaseDependencies): DatabaseComponent {
             if (component == null) {
-                synchronized(CoreDatabaseComponent::class.java) {
+                synchronized(DatabaseComponent::class.java) {
                     if (component == null) {
-                        component = DaggerCoreDatabaseComponent.factory().create(dependencies)
+                        component = DaggerDatabaseComponent.factory().create(dependencies)
                     }
                 }
             }
