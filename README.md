@@ -1,4 +1,4 @@
-# ToDoList-Yandex
+# ToDoList
 ToDoList - приложение со списком задач
 
 ## Скриншоты
