@@ -1,5 +1,5 @@
 # ToDoList
-ToDoList - приложение со списком задач
+Приложение со списком задач.
 
 ## Скриншоты
 ![image](https://github.com/andrbor02/ToDoList/assets/73199173/f0ab4516-3ca3-45ae-817f-095a19d0edad)
